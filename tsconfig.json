@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2015",
+    "declaration": true,
+    "outDir": "./dist",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": "./src/",
+    "paths": {
+      "@app/*": ["logic/app/*"],
+      "@stages/*": ["logic/stages/*"],
+      "@widgets/*": ["logic/widgets/*"],
+      "@modules/*": ["logic/modules/*"],
+      "@systems/*": ["logic/systems/*"],
+      "@views/*": ["logic/views/*"],
+      "@components/*": ["logic/components/*"],
+      "@shared/*": ["logic/shared/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts", "./dist"]
+}

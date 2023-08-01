@@ -1,0 +1,105 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+// node
+const path = require('path');
+
+// npm
+const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+module.exports = {
+  mode: 'development',
+  entry: './src/index.ts',
+  devtool: 'source-map',
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'TankShooter',
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: './src/assets',
+          to: './assets',
+        },
+      ],
+    }),
+    new webpack.ProgressPlugin(),
+  ],
+
+  module: {
+    rules: [
+      {
+        test: /\.scss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+            },
+          },
+        ],
+      },
+      {
+        // Now we apply rule for static files
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|eot|ttf|otf|mp3|ogg|mp4)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+          context: 'public',
+        },
+      },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.js$/,
+        include: [path.resolve(__dirname, 'src')],
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                modules: false,
+              },
+            ],
+          ],
+        },
+      },
+    ],
+  },
+  resolve: {
+    alias: {
+      '@app': path.resolve(__dirname, './src/logic/app'),
+      '@stages': path.resolve(__dirname, './src/logic/stages'),
+      '@widgets': path.resolve(__dirname, './src/logic/widgets'),
+      '@modules': path.resolve(__dirname, './src/logic/modules'),
+      '@systems': path.resolve(__dirname, './src/logic/systems'),
+      '@views': path.resolve(__dirname, './src/logic/views'),
+      '@components': path.resolve(__dirname, './src/logic/components'),
+      '@shared': path.resolve(__dirname, './src/logic/shared'),
+    },
+    extensions: ['.ts', '.js'],
+  },
+  devServer: {
+    open: true,
+    allowedHosts: 'all',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers':
+        'X-Requested-With, content-type, Authorization',
+    },
+  },
+};
