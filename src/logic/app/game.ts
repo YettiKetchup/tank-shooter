@@ -3,6 +3,7 @@ import { PixiRenderer } from './pixi.renderer';
 import { GameStage } from '@stages/game-stage';
 import { manifest } from '@shared/aseets';
 import { StageController } from 'mysh';
+import { stageList } from './data/stage.list';
 
 export class Game {
   public async init(): Promise<void> {
@@ -17,7 +18,9 @@ export class Game {
   }
 
   private registerStages(app: Application): void {
-    StageController.register(new GameStage(app));
+    stageList(app).forEach((stage) => {
+      StageController.register(stage);
+    });
   }
 
   private async loadManifest(): Promise<void> {
@@ -42,7 +45,9 @@ export class Game {
     node.style.left = 0;
     node.style.right = 0;
 
-    // Handle resize
+    /**
+     * Handle resize and change stage size.
+     */
     new ResizeObserver(() => {
       app.stage.x = app.view.width / 2;
       app.stage.y = app.view.height / 2;
