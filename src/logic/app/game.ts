@@ -55,6 +55,16 @@ export class Game {
       ResizeModule.node = node;
       ResizeModule.width = node.width;
       ResizeModule.height = node.height;
+
+      ResizeModule.landscape = {
+        width: 1366,
+        height: 768,
+      };
+
+      ResizeModule.portrait = {
+        width: 780,
+        height: 1688,
+      };
     }).observe(node);
   }
 

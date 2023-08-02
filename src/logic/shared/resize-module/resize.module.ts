@@ -13,6 +13,16 @@ export class ResizeModule extends Module {
   public static height: number = 0;
   public static aspectRatio: number = 1.36;
 
+  public static landscape = {
+    width: 0,
+    height: 0,
+  };
+
+  public static portrait = {
+    width: 0,
+    height: 0,
+  };
+
   constructor(private _colelctionKey: string) {
     super();
   }
