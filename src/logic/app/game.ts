@@ -4,6 +4,7 @@ import { GameStage } from '@stages/game-stage';
 import { manifest } from '@shared/aseets';
 import { StageController } from 'mysh';
 import { stageList } from './data/stage.list';
+import { AssetsLoader } from 'mysh-pixi';
 
 export class Game {
   public async init(): Promise<void> {
@@ -24,7 +25,7 @@ export class Game {
   }
 
   private async loadManifest(): Promise<void> {
-    await Assets.init({ manifest });
+    await AssetsLoader.init({ manifest });
   }
 
   private loadInitialScene(): void {
