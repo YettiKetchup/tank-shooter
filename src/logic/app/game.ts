@@ -1,10 +1,9 @@
-import { Application, Assets } from 'pixijs';
+import { Application } from 'pixijs';
 import { PixiRenderer } from './pixi.renderer';
 import { GameStage } from '@stages/game-stage';
 import { manifest } from '@shared/aseets';
-import { StageController } from 'mysh';
 import { stageList } from './data/stage.list';
-import { AssetsLoader } from 'mysh-pixi';
+import { AssetsLoader, StageController } from 'mysh-pixi';
 
 export class Game {
   public async init(): Promise<void> {

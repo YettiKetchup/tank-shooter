@@ -1,5 +1,5 @@
 import { GameStage } from '@stages/game-stage';
-import { IStage } from 'mysh';
+import { IStage } from 'mysh-pixi';
 import { Application } from 'pixijs';
 
 export const stageList = (app: Application): IStage[] => {

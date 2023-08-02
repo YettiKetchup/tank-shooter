@@ -1,6 +1,5 @@
-import { ViewBuilder } from 'mysh-pixi';
+import { ViewBuilder, EntityStorage } from 'mysh-pixi';
 import { Container } from 'pixijs';
-import { EntityStorage } from 'mysh';
 import { EnemyTankView, PlayerTankView } from '@modules/tank-module';
 
 export const GameSceneView = () => {
