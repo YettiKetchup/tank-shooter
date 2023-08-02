@@ -1,16 +1,13 @@
-import { EnemyTankView, PlayerTankView } from '@modules/tank-module/';
-import { EntityStorage } from 'mysh';
 import { ViewBuilder } from 'mysh-pixi';
 import { Container } from 'pixijs';
+import { GameSceneView } from './game-scene.view';
+import { GameUIView } from './game-ui.view';
 
 export const RootView = () => {
-  const gameCollection = EntityStorage.get('game');
   //prettier-ignore
   return new ViewBuilder(Container)
-    .withNode(Container)
-    .withChildren()
-      .withNode(PlayerTankView(gameCollection))
-      .withNode(EnemyTankView())
-    .endChildren()
+    .withNode(GameUIView()) // UI
+    .withNode(GameSceneView()) // Game
+    
   .build()
 };
