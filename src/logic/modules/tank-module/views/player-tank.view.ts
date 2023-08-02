@@ -2,26 +2,34 @@ import { ViewBuilder, EntitiesCollection } from 'mysh-pixi';
 import { TankView } from './tank.view';
 import { PlayerTankComponent } from '../components/player-tank.component';
 import {
+  ARPositionLandscape,
+  ARPositionPortrait,
   PivotLandscapeComponent,
   PivotPortraitComponent,
-  PositionLandscapeComponent,
-  PositionPortraitComponent,
-  RelativePositionLandscape,
-  RelativePositionPortrait,
-  RelativeScaleLandscape,
-  RelativeScalePortrait,
 } from '@shared/resize-module';
 
 export const PlayerTankView = (collection: EntitiesCollection) => {
+  const relativePositionLandscape = new ARPositionLandscape({
+    yAboveAR: 0.8,
+    yBellowAR: 0.8,
+    xAboveAR: 0,
+    xBellowAR: 0,
+  });
+
+  const relativePositionPortrait = new ARPositionPortrait({
+    yAboveAR: 0.8,
+    yBellowAR: 0.8,
+    xAboveAR: 0,
+    xBellowAR: 0,
+  });
+
   //prettier-ignore
   return new ViewBuilder(TankView('red'))
     .asEntity(collection)
       .withComponent(new PlayerTankComponent())
-      .withComponent(new RelativePositionLandscape(0, 300))
-      .withComponent(new RelativePositionPortrait(0, 600))
       .withComponent(new PivotLandscapeComponent(0, 1, true))
       .withComponent(new PivotPortraitComponent(0, 1, true))
-      .withComponent(new RelativeScaleLandscape(1, 1))
-      .withComponent(new RelativeScalePortrait(2, 2))
+      .withComponent(relativePositionLandscape)
+      .withComponent(relativePositionPortrait)
   .build();
 };

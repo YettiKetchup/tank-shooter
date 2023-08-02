@@ -52,12 +52,9 @@ export class Game {
     new ResizeObserver(() => {
       app.stage.x = app.view.width / 2;
       app.stage.y = app.view.height / 2;
+      ResizeModule.node = node;
       ResizeModule.width = node.width;
       ResizeModule.height = node.height;
-      ResizeModule.designResolutionLandscape.width = 1366;
-      ResizeModule.designResolutionLandscape.height = 768;
-      ResizeModule.designResolutionPortrait.width = 390 * 2;
-      ResizeModule.designResolutionPortrait.height = 844 * 2;
     }).observe(node);
   }
 

@@ -8,19 +8,10 @@ export class ResizeModule extends Module {
   private _resizeDynamicChain: ResizeChainCalback | null = null;
   private _prevOrientation: PixiOrientation | null = null;
 
+  public static node: HTMLElement | null = null;
   public static width: number = 0;
   public static height: number = 0;
-  // public static aspectRatio: number = 1.36 as const;
-
-  public static designResolutionLandscape = {
-    width: 0,
-    height: 0,
-  };
-
-  public static designResolutionPortrait = {
-    width: 0,
-    height: 0,
-  };
+  public static aspectRatio: number = 1.36;
 
   constructor(private _colelctionKey: string) {
     super();
@@ -32,7 +23,9 @@ export class ResizeModule extends Module {
     this._resizeDynamicChain = OnResizeDynamicChain(collection);
 
     this.onResize();
-    window.addEventListener('resize', () => this.onResize(), false);
+
+    if (!ResizeModule.node) return;
+    new ResizeObserver(this.onResize.bind(this)).observe(ResizeModule.node);
   }
 
   private onResize(): void {
