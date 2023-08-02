@@ -10,7 +10,7 @@ export const TankView = (color: TankColor) => {
       .withChildren()
         .withNode(Sprite)
           .withTexture(`gun_${color}.png`)
-          .withAnchor(0.5, 0)
+          .withAnchor(0.5, 0.8)
       .endChildren()
   .build();
 };
