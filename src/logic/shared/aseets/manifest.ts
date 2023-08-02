@@ -1,12 +1,10 @@
-import { AssetBunble, AssetName } from './data/bundle.enum';
-
 export const manifest = {
   bundles: [
     {
-      name: AssetBunble.GameScreen,
+      name: 'game_screen',
       assets: [
         {
-          name: AssetName.Barrel,
+          name: 'barrel_red.png',
           srcs: '/assets/sprites/barrel_red.png',
         },
       ],
