@@ -1,6 +1,6 @@
 import { AssetBunble } from '@shared/aseets';
-import { AssetsLoader, PixiStage, Root } from '@shared/mysh-pixi';
 import { RootView } from './views/root.view';
+import { AssetsLoader, PixiStage, Root } from 'mysh-pixi';
 
 @Root(RootView)
 export class GameStage extends PixiStage {

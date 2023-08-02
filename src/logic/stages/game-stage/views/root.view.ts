@@ -1,4 +1,4 @@
-import { ViewBuilder } from '@shared/mysh-pixi';
+import { ViewBuilder } from 'mysh-pixi';
 import { Container } from 'pixijs';
 import { BarrelView } from './barrel.view';
 

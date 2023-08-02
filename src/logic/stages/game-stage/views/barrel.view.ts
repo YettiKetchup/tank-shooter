@@ -1,5 +1,5 @@
 import { AssetBunble, AssetName } from '@shared/aseets';
-import { AssetsLoader, ViewBuilder } from '@shared/mysh-pixi';
+import { AssetsLoader, ViewBuilder } from 'mysh-pixi';
 import { Sprite } from 'pixijs';
 
 export const BarrelView = () => {

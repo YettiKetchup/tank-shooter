@@ -19,6 +19,7 @@
     "@pixi/sprite": "^5.0.4",
     "@pixi/ticker": "^5.0.4",
     "mysh": "file:../../mysh",
+    "mysh-pixi": "file:../../mysh-pixi",
     "pixijs": "^7.1.4"
   },
   "devDependencies": {
