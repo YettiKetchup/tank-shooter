@@ -11,6 +11,10 @@ export const manifest = {
           name: 'ground_spritesheet',
           srcs: '/assets/sprites/ground/ground.json',
         },
+        {
+          name: 'environment_spritesheet',
+          srcs: '/assets/sprites/environment/environment.json',
+        },
       ],
     },
   ],
