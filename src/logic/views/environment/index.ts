@@ -1,2 +1,10 @@
 export { TreeView } from './tree.view';
 export { TwigsView } from './twigs.view';
+export { FenceView } from './fence.view';
+export { BarricadeView } from './barricade.view';
+export { BarrelView } from './barrel.view';
+export { BarrelTopView } from './barrel-top.view';
+export { OilView } from './oil.view';
+export { SandbagView } from './sandbag.view';
+export { SandbagBrokenView } from './sandbag-broken.view';
+export { TracksView } from './tracks.view';
