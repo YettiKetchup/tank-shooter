@@ -1,12 +1,12 @@
+import { Container } from 'pixijs';
 import {
   PixiEntity,
   System,
   SystemEntitiesCollection,
   Includes,
 } from 'mysh-pixi';
-import { CanHoldComponent } from '../components/can-hold.component';
-import { Container } from 'pixijs';
-import { HoldedComponent } from '../components/holded.component';
+
+import { CanHoldComponent, HoldedComponent } from '../components';
 
 @Includes(CanHoldComponent, Container)
 export class HoldPointerSystem extends System<PixiEntity> {

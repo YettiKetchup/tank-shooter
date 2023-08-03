@@ -1,11 +1,12 @@
+import { Container } from 'pixijs';
 import {
   PixiEntity,
   System,
   SystemEntitiesCollection,
   Includes,
 } from 'mysh-pixi';
-import { Container } from 'pixijs';
-import { CursorTypeComponent } from '../components/cursor-type.component';
+
+import { CursorTypeComponent } from '../components';
 
 @Includes(CursorTypeComponent, Container)
 export class SetCursorTypeSystem extends System<PixiEntity> {
