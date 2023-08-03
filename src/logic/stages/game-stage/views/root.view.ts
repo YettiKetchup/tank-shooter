@@ -8,6 +8,5 @@ export const RootView = () => {
   return new ViewBuilder(Container)
     .withNode(GameUIView()) // UI
     .withNode(GameSceneView()) // Game
-    
   .build()
 };
