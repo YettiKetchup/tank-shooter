@@ -1,23 +1,18 @@
-import { Module, EntityStorage, EntitiesCollection } from 'mysh-pixi';
+import { Module, EntityStorage } from 'mysh-pixi';
 import { SetInteractivityChain } from './chains/set-interactivity.chain';
 
 export class InteractiveModule extends Module {
-  private _collection: EntitiesCollection | null = null;
-
-  protected get collection(): EntitiesCollection {
-    return this._collection as EntitiesCollection;
-  }
-
-  constructor(...colelctionKeys: string[]) {
+  constructor(private _collectionKeys: string[]) {
     super();
-    this._collection = EntityStorage.combine(
-      'interactive-module',
-      colelctionKeys
-    );
   }
 
   public init(): void {
-    const setInteractivity = SetInteractivityChain(this.collection);
+    const collection = EntityStorage.combine(
+      'interactive-module',
+      this._collectionKeys
+    );
+
+    const setInteractivity = SetInteractivityChain(collection);
     setInteractivity.execute();
   }
 }

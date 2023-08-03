@@ -1,3 +1,5 @@
+import { Container } from 'pixijs';
+
 import {
   PixiEntity,
   System,
@@ -5,7 +7,6 @@ import {
   Includes,
 } from 'mysh-pixi';
 
-import { Container } from 'pixijs';
 import { PixiOrientation } from '../data/types';
 
 import { PivotLandscapeComponent, PivotPortraitComponent } from '../components';

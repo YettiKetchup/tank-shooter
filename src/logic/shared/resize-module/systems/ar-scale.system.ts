@@ -1,3 +1,5 @@
+import { Container } from 'pixijs';
+
 import {
   PixiEntity,
   System,
@@ -6,9 +8,9 @@ import {
 } from 'mysh-pixi';
 
 import { ARScaleLandscape, ARScalePortrait } from '../components';
-import { Container } from 'pixijs';
 import { PixiOrientation } from '../data/types';
-import { ResizeModule } from '../resize.module';
+import { ResizeModuleConfig } from '../data/resize-module.config';
+import { getAspectRatio } from '../utils';
 
 @Includes(ARScaleLandscape, ARScalePortrait, Container)
 export class ARScaleSystem extends System<PixiEntity> {
@@ -17,7 +19,8 @@ export class ARScaleSystem extends System<PixiEntity> {
   }
 
   protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
-    const { width, height, aspectRatio } = ResizeModule;
+    const { CURRENT_WIDTH, CURRENT_HEIGHT, ASPECT_RATIO } = ResizeModuleConfig;
+    const currentAspect = getAspectRatio(CURRENT_WIDTH, CURRENT_HEIGHT);
 
     entities.loop((entity) => {
       const container = entity.get(Container);
@@ -29,14 +32,12 @@ export class ARScaleSystem extends System<PixiEntity> {
 
       const designResolution =
         this._orientation === 'landscape'
-          ? ResizeModule.landscape
-          : ResizeModule.portrait;
-
-      const currentAspect = this.aspectRatio(width, height);
+          ? ResizeModuleConfig.LANDSCAPE
+          : ResizeModuleConfig.PORTRAIT;
 
       const comparableAspect = scale.data.aspectRatio
         ? scale.data.aspectRatio
-        : aspectRatio;
+        : ASPECT_RATIO;
 
       let x = 0;
       let y = 0;
@@ -45,22 +46,16 @@ export class ARScaleSystem extends System<PixiEntity> {
         //BellowAR
         x = scale.data.xBellowAR;
         y = scale.data.yBellowAR;
-        console.log('BELOW', this._orientation);
       } else {
         //AboveAR
         x = scale.data.xAboveAR;
         y = scale.data.yAboveAR;
-        console.log('ABOW', this._orientation);
       }
 
-      const delta = width / designResolution.width;
+      const delta = CURRENT_WIDTH / designResolution.width;
 
       container.scale.x = x * delta;
       container.scale.y = y * delta;
     });
-  }
-
-  private aspectRatio(width: number, height: number): number {
-    return width > height ? width / height : height / width;
   }
 }

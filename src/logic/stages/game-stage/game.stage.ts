@@ -6,8 +6,8 @@ import { ResizeModule } from '@shared/resize-module';
 
 @Root(RootView)
 @Modules(
-  new InteractiveModule('game'),
-  new ResizeModule('game'),
+  new InteractiveModule(['game']),
+  new ResizeModule(['game']),
   new TankModule()
 )
 export class GameStage extends PixiStage {

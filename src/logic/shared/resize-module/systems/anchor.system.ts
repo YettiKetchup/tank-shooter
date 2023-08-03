@@ -1,3 +1,5 @@
+import { Sprite } from 'pixijs';
+
 import {
   PixiEntity,
   System,
@@ -5,13 +7,12 @@ import {
   Includes,
 } from 'mysh-pixi';
 
-import { Sprite } from 'pixijs';
-import { PixiOrientation } from '../data/types';
-
 import {
   AnchorLandscapeComponent,
   AnchorPortraitComponent,
 } from '../components';
+
+import { PixiOrientation } from '../data/types';
 
 @Includes(AnchorLandscapeComponent, AnchorPortraitComponent, Sprite)
 export class AnchorSystem extends System<PixiEntity> {

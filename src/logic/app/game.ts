@@ -4,7 +4,7 @@ import { GameStage } from '@stages/game-stage';
 import { manifest } from '@shared/aseets';
 import { stageList } from './data/stage.list';
 import { AssetsLoader, StageController } from 'mysh-pixi';
-import { ResizeModule } from '@shared/resize-module';
+import { ResizeModuleConfig } from '@shared/resize-module';
 
 export class Game {
   public async init(): Promise<void> {
@@ -46,25 +46,27 @@ export class Game {
     node.style.left = 0;
     node.style.right = 0;
 
+    ResizeModuleConfig.NODE = node;
+
+    ResizeModuleConfig.LANDSCAPE = {
+      width: 1366,
+      height: 768,
+    };
+
+    ResizeModuleConfig.PORTRAIT = {
+      width: 780,
+      height: 1688,
+    };
+
     /**
      * Handle resize and change stage size.
      */
     new ResizeObserver(() => {
       app.stage.x = app.view.width / 2;
       app.stage.y = app.view.height / 2;
-      ResizeModule.node = node;
-      ResizeModule.width = node.width;
-      ResizeModule.height = node.height;
 
-      ResizeModule.landscape = {
-        width: 1366,
-        height: 768,
-      };
-
-      ResizeModule.portrait = {
-        width: 780,
-        height: 1688,
-      };
+      ResizeModuleConfig.CURRENT_WIDTH = node.width;
+      ResizeModuleConfig.CURRENT_HEIGHT = node.height;
     }).observe(node);
   }
 

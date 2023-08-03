@@ -1,3 +1,5 @@
+import { Container } from 'pixijs';
+
 import {
   PixiEntity,
   System,
@@ -10,7 +12,6 @@ import {
   PositionPortraitComponent,
 } from '../components';
 
-import { Container } from 'pixijs';
 import { PixiOrientation } from '../data/types';
 
 @Includes(PositionLandscapeComponent, PositionPortraitComponent, Container)

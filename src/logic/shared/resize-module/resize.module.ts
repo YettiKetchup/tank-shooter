@@ -1,41 +1,33 @@
 import { EntityStorage, Module } from 'mysh-pixi';
 import { PixiOrientation, ResizeChainCalback } from './data/types';
 import { OnResizeStaticChain, OnResizeDynamicChain } from './chains/';
-import { orientation } from './helpers/orientation';
+import { orientation } from './utils/orientation.util';
+import { ResizeModuleConfig } from './data/resize-module.config';
 
 export class ResizeModule extends Module {
   private _resizeStaticChain: ResizeChainCalback | null = null;
   private _resizeDynamicChain: ResizeChainCalback | null = null;
   private _prevOrientation: PixiOrientation | null = null;
 
-  public static node: HTMLElement | null = null;
-  public static width: number = 0;
-  public static height: number = 0;
-  public static aspectRatio: number = 1.36;
-
-  public static landscape = {
-    width: 0,
-    height: 0,
-  };
-
-  public static portrait = {
-    width: 0,
-    height: 0,
-  };
-
-  constructor(private _colelctionKey: string) {
+  constructor(private _collectionKeys: string[]) {
     super();
   }
 
   init(): void {
-    const collection = EntityStorage.get(this._colelctionKey);
+    const collection = EntityStorage.combine(
+      'resize-module',
+      this._collectionKeys
+    );
+
     this._resizeStaticChain = OnResizeStaticChain(collection);
     this._resizeDynamicChain = OnResizeDynamicChain(collection);
 
     this.onResize();
 
-    if (!ResizeModule.node) return;
-    new ResizeObserver(this.onResize.bind(this)).observe(ResizeModule.node);
+    if (!ResizeModuleConfig.NODE) return;
+    new ResizeObserver(this.onResize.bind(this)).observe(
+      ResizeModuleConfig.NODE
+    );
   }
 
   private onResize(): void {
