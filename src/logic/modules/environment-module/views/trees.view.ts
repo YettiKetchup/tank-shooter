@@ -1,20 +1,21 @@
-import { TreeView, TwigsView } from '@views/environment';
 import { ViewBuilder } from 'mysh-pixi';
 import { Container } from 'pixijs';
+import { EnvironmentView } from './environment-item.view';
+import { AssetKey } from '@shared/aseets/asset-key.enum';
 
 export const TreesView = () => {
   //prettier-ignore
   return new ViewBuilder(Container)
-    .withNode(TreeView(-380, 160))
-    .withNode(TreeView(-290, 50, 'green', 'small'))
-    .withNode(TreeView(330, 400))
-    .withNode(TreeView(635, 300, 'green', 'small'))
-    .withNode(TreeView(400, -145, 'brown'))
-    .withNode(TreeView(-460, -200, 'brown', 'small'))
-    .withNode(TreeView(-155, -465, 'brown'))
-    .withNode(TreeView(185, -400, 'brown', 'small'))
-    .withNode(TwigsView(305, 100))
-    .withNode(TwigsView(-230, 425))
-    .withNode(TwigsView(370, -455, 'brown'))
+    .withNode(EnvironmentView(AssetKey.TreeGrenLarge, -380, 160))
+    .withNode(EnvironmentView(AssetKey.TreeGrenSmall, -290, 50))
+    .withNode(EnvironmentView(AssetKey.TreeGrenLarge, 330, 400))
+    .withNode(EnvironmentView(AssetKey.TreeGrenSmall, 635, 300))
+    .withNode(EnvironmentView(AssetKey.TreeBrownLarge, 400, -145))
+    .withNode(EnvironmentView(AssetKey.TreeBrownSmall, -460, -200))
+    .withNode(EnvironmentView(AssetKey.TreeBrownLarge, -155, -465))
+    .withNode(EnvironmentView(AssetKey.TreeBrownSmall, 185, -400))
+    .withNode(EnvironmentView(AssetKey.TwigsGreen, 305, 100))
+    .withNode(EnvironmentView(AssetKey.TwigsGreen, -230, 425))
+    .withNode(EnvironmentView(AssetKey.TwigsBrown, 370, -455))
   .build();
 };

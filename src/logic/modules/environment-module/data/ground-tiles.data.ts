@@ -1,3 +1,5 @@
+import { AssetKey } from '@shared/aseets/asset-key.enum';
+
 export const groundGrid = [
   [10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11],
   [11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10],
@@ -15,20 +17,20 @@ export const groundGrid = [
 
 export const groundMapConfig: Map<number, string> = new Map();
 
-groundMapConfig.set(0, 'grass_1.png');
-groundMapConfig.set(1, 'grass_2.png');
-groundMapConfig.set(2, 'grass_right.png');
-groundMapConfig.set(3, 'grass_left.png');
-groundMapConfig.set(4, 'grass_road.png');
-groundMapConfig.set(5, 'grass_road_up.png');
-groundMapConfig.set(6, 'grass_sand.png');
+groundMapConfig.set(0, AssetKey.Grass);
+groundMapConfig.set(1, AssetKey.GrassVariant);
+groundMapConfig.set(2, AssetKey.GrassRight);
+groundMapConfig.set(3, AssetKey.GrassLeft);
+groundMapConfig.set(4, AssetKey.GrassRoad);
+groundMapConfig.set(5, AssetKey.GrassRoadUp);
+groundMapConfig.set(6, AssetKey.GrassSand);
 
-groundMapConfig.set(10, 'sand_1.png');
-groundMapConfig.set(11, 'sand_2.png');
-groundMapConfig.set(12, 'sand_left.png');
-groundMapConfig.set(13, 'sand_right.png');
-groundMapConfig.set(14, 'sand_road.png');
-groundMapConfig.set(15, 'sand_road_up.png');
+groundMapConfig.set(10, AssetKey.Sand);
+groundMapConfig.set(11, AssetKey.SandVariant);
+groundMapConfig.set(12, AssetKey.SandLeft);
+groundMapConfig.set(13, AssetKey.SandRight);
+groundMapConfig.set(14, AssetKey.SandRoad);
+groundMapConfig.set(15, AssetKey.SandRoadUp);
 
-groundMapConfig.set(20, 'grass_sand_road_1.png');
-groundMapConfig.set(21, 'grass_sand_road_2.png');
+groundMapConfig.set(20, AssetKey.GrassSandRoad);
+groundMapConfig.set(21, AssetKey.GrassSandRoadVariat);
