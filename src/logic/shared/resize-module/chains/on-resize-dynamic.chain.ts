@@ -6,7 +6,7 @@ export const OnResizeDynamicChain = (collection: EntitiesCollection) => {
   //prettier-ignore
   return (orientation: PixiOrientation) => new ChainBuilder(collection)
     .withSystem(new ARPositionSystem(orientation))
-    .withSystem(new SmartFitSystem(orientation))
+    .withSystem(new SmartFitSystem())
     .withSystem(new ARScaleSystem(orientation))
   .build()
 };

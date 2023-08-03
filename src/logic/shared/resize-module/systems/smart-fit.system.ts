@@ -7,13 +7,12 @@ import {
   Includes,
 } from 'mysh-pixi';
 
-import { PixiOrientation } from '../data/types';
 import { SmartFitComponent } from '../components';
 import { ResizeModuleConfig } from '../data/resize-module.config';
 
 @Includes(SmartFitComponent, Container)
 export class SmartFitSystem extends System<PixiEntity> {
-  constructor(private _orientation: PixiOrientation) {
+  constructor() {
     super();
   }
 
