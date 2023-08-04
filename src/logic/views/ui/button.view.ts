@@ -14,7 +14,8 @@ export const ButtonView = (collection: EntitiesCollection) => {
   const buttonComponent = new ButtonComponent(
     AssetKey.Button,
     AssetKey.ButtonHovered,
-    AssetKey.ButtonPressed
+    AssetKey.ButtonPressed,
+    AssetKey.ButtonDisabled
   );
 
   //prettier-ignore

@@ -7,14 +7,14 @@ import {
   Includes,
 } from 'mysh-pixi';
 
-import { DisabledButtonComponent } from '../components';
+import { ButtonComponent, DisabledButtonComponent } from '../components';
 
-@Includes(DisabledButtonComponent, Sprite)
+@Includes(ButtonComponent, DisabledButtonComponent, Sprite)
 export class DisableButtonSystem extends System<PixiEntity> {
   protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
     entities.loop((entity) => {
       const sprite = entity.get(Sprite);
-      const button = entity.get(DisabledButtonComponent);
+      const button = entity.get(ButtonComponent);
 
       sprite.texture = button.disabled;
       sprite.interactive = false;

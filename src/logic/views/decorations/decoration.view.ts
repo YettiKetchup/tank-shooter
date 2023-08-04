@@ -1,7 +1,7 @@
 import { AssetsLoader, ViewBuilder } from 'mysh-pixi';
 import { Sprite } from 'pixijs';
 
-export const EnvironmentView = (asset: string, x: number, y: number) => {
+export const DecorationView = (asset: string, x: number, y: number) => {
   const texture = AssetsLoader.Textures.get(asset);
 
   //prettier-ignore
