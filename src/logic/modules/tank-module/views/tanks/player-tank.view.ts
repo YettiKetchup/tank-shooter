@@ -1,5 +1,5 @@
 import { ViewBuilder, EntitiesCollection } from 'mysh-pixi';
-import { PlayerTankComponent } from '../components/player-tank.component';
+import { PlayerTankComponent } from '../../components';
 import { Sprite } from 'pixijs';
 import { AssetKey } from '@shared/data';
 
