@@ -15,6 +15,10 @@ export const manifest = {
           name: 'environment_spritesheet',
           srcs: '/assets/sprites/environment/environment.json',
         },
+        {
+          name: 'ui_spritesheet',
+          srcs: '/assets/sprites/ui/ui.json',
+        },
       ],
     },
   ],

@@ -6,9 +6,9 @@ import {
   Includes,
 } from 'mysh-pixi';
 
-import { CanHoldComponent, HoldedComponent } from '../components';
+import { ButtonHoldableComponent, ButtonHoldedComponent } from '../components';
 
-@Includes(CanHoldComponent, Container)
+@Includes(ButtonHoldableComponent, Container)
 export class HoldPointerSystem extends System<PixiEntity> {
   protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
     entities.loop((entity) => {
@@ -20,10 +20,10 @@ export class HoldPointerSystem extends System<PixiEntity> {
 
       container.on('pointerdown', () => {
         timeoutId = setInterval(() => {
-          if (!entity.has([HoldedComponent])) {
-            entity$.add(new HoldedComponent());
+          if (!entity.has([ButtonHoldedComponent])) {
+            entity$.add(new ButtonHoldedComponent());
           } else {
-            const holded$ = entity.get(HoldedComponent, true);
+            const holded$ = entity.get(ButtonHoldedComponent, true);
             holded$.frames += 1;
           }
         }, 16);
@@ -31,8 +31,8 @@ export class HoldPointerSystem extends System<PixiEntity> {
 
       container.on('pointerup', () => {
         clearInterval(timeoutId);
-        if (entity.has([HoldedComponent])) {
-          entity$.remove(HoldedComponent);
+        if (entity.has([ButtonHoldedComponent])) {
+          entity$.remove(ButtonHoldedComponent);
         }
       });
     });

@@ -1,7 +1,7 @@
 import { ViewBuilder, EntitiesCollection } from 'mysh-pixi';
 import { PlayerTankComponent } from '../components/player-tank.component';
 import { Sprite } from 'pixijs';
-import { AssetKey } from '@shared/aseets/asset-key.enum';
+import { AssetKey } from '@shared/data';
 
 export const PlayerTankView = (collection: EntitiesCollection) => {
   //prettier-ignore

@@ -1,4 +1,4 @@
-import { AssetKey } from '@shared/aseets/asset-key.enum';
+import { AssetKey } from '@shared/data';
 
 export const groundGrid = [
   [10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11],

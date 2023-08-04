@@ -1,6 +1,6 @@
 import { ViewBuilder } from 'mysh-pixi';
 import { Sprite } from 'pixijs';
-import { AssetKey } from '@shared/aseets/asset-key.enum';
+import { AssetKey } from '@shared/data';
 
 export const EnemyTankView = () => {
   //prettier-ignore

@@ -1,7 +1,7 @@
 import { ViewBuilder } from 'mysh-pixi';
 import { Container } from 'pixijs';
 import { EnvironmentView } from './environment-item.view';
-import { AssetKey } from '@shared/aseets/asset-key.enum';
+import { AssetKey } from '@shared/data';
 
 export const DecorationsView = () => {
   //prettier-ignore

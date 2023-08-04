@@ -38,4 +38,15 @@ export enum AssetKey {
   TankBlueBody = 'tank_blue.png',
   TankRedGun = 'gun_red.png',
   TankBlueGun = 'gun_blue.png',
+
+  //UI
+  Button = 'button.png',
+  ButtonDisabled = 'button_disabled.png',
+  ButtonHovered = 'button_hovered.png',
+  ButtonPressed = 'button_prressed.png',
+  Crossair = 'crossair.png',
+  HealthbarBackground = 'healthbar_bg.png',
+  HealthbarValue = 'healthbar_value.png',
+  PunchBackground = 'punch_bg.png',
+  PunchValue = 'punch_value.png',
 }
