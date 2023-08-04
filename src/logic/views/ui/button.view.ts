@@ -1,4 +1,4 @@
-import { AssetKey } from '@shared/data';
+import { Sprite } from 'pixijs';
 
 import {
   ButtonComponent,
@@ -7,10 +7,20 @@ import {
   CursorTypeComponent,
 } from '@shared/interactive-module';
 
-import { AssetsLoader, EntitiesCollection, ViewBuilder } from 'mysh-pixi';
-import { Sprite } from 'pixijs';
+import {
+  AssetsLoader,
+  Component,
+  EntitiesCollection,
+  ViewBuilder,
+} from 'mysh-pixi';
 
-export const ButtonView = (collection: EntitiesCollection, icon: string) => {
+import { AssetKey } from '@shared/data';
+
+export const ButtonView = (
+  collection: EntitiesCollection,
+  icon: string,
+  components: Component[] = []
+) => {
   const buttonComponent = new ButtonComponent(
     AssetKey.Button,
     AssetKey.ButtonHovered,
@@ -21,19 +31,26 @@ export const ButtonView = (collection: EntitiesCollection, icon: string) => {
   const iconTexture = AssetsLoader.Textures.get(icon);
 
   //prettier-ignore
-  return new ViewBuilder(Sprite)
+  const view = new ViewBuilder(Sprite)
+    .withAnchor(0.5, 0.5)
     .asEntity(collection)
       .withComponent(buttonComponent)
       .withComponent(new ButtonShiftedClick(0, 2))
       .withComponent(new CursorTypeComponent('pointer'))
-      .withComponent(new ButtonHoldableComponent())
-    .withAnchor(0.5, 0.5)
-    .withChildren()
-      .withNode(Sprite)
-        .withTexture(iconTexture)
-        .withAnchor(0.5, 0.5)
-        .withScale(0.7, 0.7)
-        .withPositionY(-2)
-    .endChildren()
-  .build();
+      .withComponent(new ButtonHoldableComponent());
+
+  components.forEach((component) => {
+    view.withComponent(component);
+  });
+
+  //prettier-ignore
+  view.withChildren()
+    .withNode(Sprite)
+      .withTexture(iconTexture)
+      .withAnchor(0.5, 0.5)
+      .withScale(0.7, 0.7)
+      .withPositionY(-2)
+  .endChildren();
+
+  return view.build();
 };

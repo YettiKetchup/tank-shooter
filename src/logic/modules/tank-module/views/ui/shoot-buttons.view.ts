@@ -1,4 +1,6 @@
-import { AssetKey } from '@shared/data';
+import { Container } from 'pixijs';
+import { EntityStorage, ViewBuilder } from 'mysh-pixi';
+
 import {
   ARPositionLandscape,
   ARPositionPortrait,
@@ -7,11 +9,12 @@ import {
   PositionLandscapeComponent,
   PositionPortraitComponent,
 } from '@shared/resize-module';
-import { ButtonView } from '@views/ui';
-import { EntitiesCollection, ViewBuilder } from 'mysh-pixi';
-import { Container } from 'pixijs';
 
-export const ShootButtonsView = (collection: EntitiesCollection) => {
+import { ButtonView } from '@views/ui';
+import { AssetKey, StorageKey } from '@shared/data';
+import { ShootButtonView } from './shoot-button.view';
+
+export const ShootButtonsView = () => {
   const relativePositionLandscape = new ARPositionLandscape({
     xAboveAR: 0.9,
     yAboveAR: 0,
@@ -26,25 +29,31 @@ export const ShootButtonsView = (collection: EntitiesCollection) => {
     yBellowAR: 0.85,
   });
 
+  const collection = EntityStorage.get(StorageKey.UI);
+
   //prettier-ignore
   return new ViewBuilder(Container)
-    .asEntity(collection)
-      .withComponent(relativePositionLandscape)
-      .withComponent(relativePositionPortrait)
-      .withComponent(new PivotLandscapeComponent(1, 0, true))
-      .withComponent(new PivotPortraitComponent(0, 1, true))
-    .withChildren()
-      .withNode(ButtonView(collection, AssetKey.BulletRedSmall))
-        .asEntity(collection)
-          .withComponent(new PositionLandscapeComponent(0, 70))
-          .withComponent(new PositionPortraitComponent(-70, 0))
+    .withNode(ShootButtonView(AssetKey.BulletRedSmall))
+      .asEntity(collection)
+        .withComponent(new PivotLandscapeComponent(1, 0, true))
+        .withComponent(new PivotPortraitComponent(0, 1, true))
+        .withComponent(relativePositionLandscape)
+        .withComponent(relativePositionPortrait)
+        
+    
+    
+    // .withChildren()
+    //   .withNode(ButtonView(collection, AssetKey.BulletRedSmall))
+    //     .asEntity(collection)
+    //       .withComponent(new PositionLandscapeComponent(0, 70))
+    //       .withComponent(new PositionPortraitComponent(-70, 0))
 
-      .withNode(ButtonView(collection, AssetKey.BulletRedMedium))
-      
-      .withNode(ButtonView(collection, AssetKey.BulletRedBig))
-        .asEntity(collection)
-          .withComponent(new PositionLandscapeComponent(0, -70))
-          .withComponent(new PositionPortraitComponent(70, 0))
-    .endChildren()
+    //   .withNode(ButtonView(collection, AssetKey.BulletRedMedium))
+
+    //   .withNode(ButtonView(collection, AssetKey.BulletRedBig))
+    //     .asEntity(collection)
+    //       .withComponent(new PositionLandscapeComponent(0, -70))
+    //       .withComponent(new PositionPortraitComponent(70, 0))
+    // .endChildren()
   .build();
 };
