@@ -4,7 +4,7 @@ export const ShootButtonLabelView = (label: string) => {
   const style = new TextStyle({
     fill: '#ffffff',
     strokeThickness: 2,
-    fontFamily: 'glowing-bubble',
+    fontFamily: 'Glowing Bubble',
   });
 
   const text = new Text(label, style);

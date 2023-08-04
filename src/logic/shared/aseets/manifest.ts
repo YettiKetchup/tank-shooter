@@ -19,6 +19,10 @@ export const manifest = {
           name: 'ui_spritesheet',
           srcs: '/assets/sprites/ui/ui.json',
         },
+        {
+          name: 'Bubbles',
+          srcs: './assets/fonts/glowing-bubble/glowing-bubble.ttf',
+        },
       ],
     },
   ],
