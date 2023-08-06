@@ -1,96 +1,91 @@
-{"frames": {
-
-"bullet_blue_1.png":
 {
-	"frame": {"x":0,"y":0,"w":16,"h":28},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":28},
-	"sourceSize": {"w":16,"h":28}
-},
-"bullet_blue_2.png":
-{
-	"frame": {"x":68,"y":0,"w":24,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":32},
-	"sourceSize": {"w":24,"h":32}
-},
-"bullet_blue_3.png":
-{
-	"frame": {"x":17,"y":0,"w":16,"h":36},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":36},
-	"sourceSize": {"w":16,"h":36}
-},
-"bullet_red_1.png":
-{
-	"frame": {"x":34,"y":0,"w":16,"h":28},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":28},
-	"sourceSize": {"w":16,"h":28}
-},
-"bullet_red_2.png":
-{
-	"frame": {"x":93,"y":0,"w":24,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":32},
-	"sourceSize": {"w":24,"h":32}
-},
-"bullet_red_3.png":
-{
-	"frame": {"x":51,"y":0,"w":16,"h":36},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":36},
-	"sourceSize": {"w":16,"h":36}
-},
-"gun_blue.png":
-{
-	"frame": {"x":0,"y":37,"w":24,"h":60},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":60},
-	"sourceSize": {"w":24,"h":60}
-},
-"gun_red.png":
-{
-	"frame": {"x":25,"y":37,"w":24,"h":60},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":60},
-	"sourceSize": {"w":24,"h":60}
-},
-"tank_blue.png":
-{
-	"frame": {"x":0,"y":118,"w":84,"h":84},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":84},
-	"sourceSize": {"w":84,"h":84}
-},
-"tank_red.png":
-{
-	"frame": {"x":50,"y":37,"w":76,"h":80},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":80},
-	"sourceSize": {"w":76,"h":80}
-}},
-"animations": {
-	"bullet_blue": ["bullet_blue_1.png","bullet_blue_2.png","bullet_blue_3.png"],
-	"bullet_red": ["bullet_red_1.png","bullet_red_2.png","bullet_red_3.png"]
-},
-"meta": {
-	"app": "https://www.codeandweb.com/texturepacker",
-	"version": "1.1",
-	"image": "tank.png",
-	"format": "RGBA8888",
-	"size": {"w":128,"h":256},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:8d0422b6d514f1699cee188a7a8d5aa1:2de108542d2a80e3cb1ed1a201cb349c:e5746570371ae3e0565b6e20f5a72ab3$"
-}
+  "frames": {
+    "bullet_blue_small.png": {
+      "frame": { "x": 0, "y": 0, "w": 16, "h": 28 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 28 },
+      "sourceSize": { "w": 16, "h": 28 }
+    },
+    "bullet_blue_medium.png": {
+      "frame": { "x": 68, "y": 0, "w": 24, "h": 32 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 32 },
+      "sourceSize": { "w": 24, "h": 32 }
+    },
+    "bullet_blue_big.png": {
+      "frame": { "x": 17, "y": 0, "w": 16, "h": 36 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 36 },
+      "sourceSize": { "w": 16, "h": 36 }
+    },
+    "bullet_red_small.png": {
+      "frame": { "x": 34, "y": 0, "w": 16, "h": 28 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 28 },
+      "sourceSize": { "w": 16, "h": 28 }
+    },
+    "bullet_red_medium.png": {
+      "frame": { "x": 93, "y": 0, "w": 24, "h": 32 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 32 },
+      "sourceSize": { "w": 24, "h": 32 }
+    },
+    "bullet_red_big.png": {
+      "frame": { "x": 51, "y": 0, "w": 16, "h": 36 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 36 },
+      "sourceSize": { "w": 16, "h": 36 }
+    },
+    "gun_blue.png": {
+      "frame": { "x": 0, "y": 37, "w": 24, "h": 60 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 60 },
+      "sourceSize": { "w": 24, "h": 60 }
+    },
+    "gun_red.png": {
+      "frame": { "x": 25, "y": 37, "w": 24, "h": 60 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 60 },
+      "sourceSize": { "w": 24, "h": 60 }
+    },
+    "tank_blue.png": {
+      "frame": { "x": 0, "y": 118, "w": 84, "h": 84 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 84, "h": 84 },
+      "sourceSize": { "w": 84, "h": 84 }
+    },
+    "tank_red.png": {
+      "frame": { "x": 50, "y": 37, "w": 76, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 76, "h": 80 },
+      "sourceSize": { "w": 76, "h": 80 }
+    }
+  },
+  "animations": {
+    "bullet_blue": [
+      "bullet_blue_1.png",
+      "bullet_blue_2.png",
+      "bullet_blue_3.png"
+    ],
+    "bullet_red": ["bullet_red_1.png", "bullet_red_2.png", "bullet_red_3.png"]
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.1",
+    "image": "tank.png",
+    "format": "RGBA8888",
+    "size": { "w": 128, "h": 256 },
+    "scale": "1",
+    "smartupdate": "$TexturePacker:SmartUpdate:8d0422b6d514f1699cee188a7a8d5aa1:2de108542d2a80e3cb1ed1a201cb349c:e5746570371ae3e0565b6e20f5a72ab3$"
+  }
 }

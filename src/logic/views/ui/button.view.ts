@@ -39,6 +39,9 @@ export const ButtonView = (
       .withComponent(new CursorTypeComponent('pointer'))
       .withComponent(new ButtonHoldableComponent());
 
+  /**
+   * Add extra components.
+   */
   components.forEach((component) => {
     view.withComponent(component);
   });

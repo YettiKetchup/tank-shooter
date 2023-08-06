@@ -40,9 +40,9 @@ export enum AssetKey {
   TankBlueGun = 'gun_blue.png',
 
   //Bullets
-  BulletRedSmall = 'bullet_red_1.png',
-  BulletRedMedium = 'bullet_red_2.png',
-  BulletRedBig = 'bullet_red_3.png',
+  BulletRedSmall = 'bullet_red_small.png',
+  BulletRedMedium = 'bullet_red_medium.png',
+  BulletRedBig = 'bullet_red_big.png',
 
   //UI
   Button = 'button.png',

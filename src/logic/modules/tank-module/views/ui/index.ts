@@ -1,1 +1,1 @@
-export { ShootButtonsView } from './shoot-buttons.view';
+export { ShootButtonsGroup } from './shoot-buttons-group.view';
