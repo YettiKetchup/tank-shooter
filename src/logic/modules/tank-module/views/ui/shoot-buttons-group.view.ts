@@ -1,17 +1,14 @@
 import { Container } from 'pixijs';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';
 import { StorageKey } from '@shared/data';
+import { ShootButtonsFactory } from './shoot-buttons-factory.view';
 
 import {
   ARPositionLandscape,
   ARPositionPortrait,
   PivotLandscapeComponent,
   PivotPortraitComponent,
-  PositionLandscapeComponent,
-  PositionPortraitComponent,
 } from '@shared/resize-module';
-import { ShootButtonsFactory } from './shoot-buttons-factory.view';
-import { ShootButtonView } from './shoot-button.view';
 
 export const ShootButtonsGroup = () => {
   const collection = EntityStorage.get(StorageKey.UI);
