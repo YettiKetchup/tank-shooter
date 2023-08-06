@@ -16,7 +16,7 @@ export const ShootButtonsFactory = (
   });
 
   const gap = { x: 45, y: 45 };
-  const { length } = buttons;
+  const length = buttons.length;
 
   buttons.forEach((button, index) => {
     const { width, height } = button.getBounds();

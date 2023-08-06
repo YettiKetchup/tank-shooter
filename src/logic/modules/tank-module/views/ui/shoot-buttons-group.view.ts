@@ -27,13 +27,13 @@ export const ShootButtonsGroup = () => {
     yBellowAR: 0.85,
   });
 
-  const buttonsGroup = new ViewBuilder(Container)
+  // prettier-ignore
+  return new ViewBuilder(Container)
     .asEntity(collection)
     .withComponent(new PivotLandscapeComponent(1, 0, true))
     .withComponent(new PivotPortraitComponent(0, 1, true))
     .withComponent(relativePositionLandscape)
     .withComponent(relativePositionPortrait)
-    .withFactory(ShootButtonsFactory, collection);
-
-  return buttonsGroup.build();
+    .withFactory(ShootButtonsFactory, collection)
+  .build();
 };
