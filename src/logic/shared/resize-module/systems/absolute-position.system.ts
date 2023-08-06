@@ -1,4 +1,5 @@
 import { Container } from 'pixijs';
+import { PixiOrientation } from '../data/types';
 
 import {
   PixiEntity,
@@ -11,8 +12,6 @@ import {
   PositionLandscapeComponent,
   PositionPortraitComponent,
 } from '../components';
-
-import { PixiOrientation } from '../data/types';
 
 @Includes(PositionLandscapeComponent, PositionPortraitComponent, Container)
 export class AbsolutePositionSystem extends System<PixiEntity> {

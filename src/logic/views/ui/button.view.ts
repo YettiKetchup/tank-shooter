@@ -36,23 +36,15 @@ export const ButtonView = (
     .withComponent(buttonComponent)
     .withComponent(new ButtonShiftedClick(0, 2))
     .withComponent(new CursorTypeComponent('pointer'))
-    .withComponent(new ButtonHoldableComponent());
-
-  /**
-   * Add extra components.
-   */
-  components.forEach((component) => {
-    view.withComponent(component);
-  });
-
-  //prettier-ignore
-  view.withChildren()
-    .withNode(Sprite)
-      .withTexture(iconTexture)
-      .withAnchor(0.5, 0.5)
-      .withScale(0.7, 0.7)
-      .withPositionY(-2)
-  .endChildren();
+    .withComponent(new ButtonHoldableComponent())
+    .withComponents(components)
+    .withChildren()
+      .withNode(Sprite)
+        .withTexture(iconTexture)
+        .withAnchor(0.5, 0.5)
+        .withScale(0.7, 0.7)
+        .withPositionY(-2)
+  . endChildren();
 
   return view.build();
 };

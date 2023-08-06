@@ -30,8 +30,6 @@ export class GenerateGroundSystem extends System<PixiEntity> {
     const areaWidth = width * tileWidth;
     const areaHeight = height * tileHeight;
 
-    console.log();
-
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const tile = new Sprite();

@@ -3,11 +3,14 @@ import { PixiOrientation, ResizeChainCalback } from './data/types';
 import { OnResizeStaticChain, OnResizeDynamicChain } from './chains/';
 import { orientation } from './utils/orientation.util';
 import { ResizeModuleConfig } from './data/resize-module.config';
+import { EntitySubject } from 'mysh-pixi';
+import { ForceResizeComponent } from './components';
 
 export class ResizeModule extends Module {
   private _resizeStaticChain: ResizeChainCalback | null = null;
   private _resizeDynamicChain: ResizeChainCalback | null = null;
   private _prevOrientation: PixiOrientation | null = null;
+  private _onForceResize$ = EntitySubject.onAdd(ForceResizeComponent);
 
   constructor(private _collectionKeys: string[]) {
     super();
@@ -22,30 +25,45 @@ export class ResizeModule extends Module {
     this._resizeStaticChain = OnResizeStaticChain(collection);
     this._resizeDynamicChain = OnResizeDynamicChain(collection);
 
-    this.onResize();
-
     if (!ResizeModuleConfig.NODE) return;
-    new ResizeObserver(this.onResize.bind(this)).observe(
-      ResizeModuleConfig.NODE
-    );
+
+    new ResizeObserver(() => {
+      const orient = orientation();
+      if (orient !== this._prevOrientation) {
+        this._prevOrientation = orient;
+        this.resizeStatic(orient, true);
+      }
+
+      this.resizeDynamic(orient);
+    }).observe(ResizeModuleConfig.NODE);
   }
 
-  private onResize(): void {
-    const orient = orientation();
+  postInit(): void {
+    this._onForceResize$.subscribe((entity) => {
+      const orient = orientation();
+      entity.remove(ForceResizeComponent);
 
+      this.resizeDynamic(orient);
+      this.resizeStatic(orient, true);
+    });
+  }
+
+  destroy(): void {
+    this._onForceResize$.unsubscribe();
+  }
+
+  private resizeDynamic(orieantation: PixiOrientation): void {
     if (this._resizeDynamicChain) {
-      this._resizeDynamicChain(orient).execute();
+      this._resizeDynamicChain(orieantation).execute();
     }
+  }
 
-    /**
-     * Optimization moment.
-     * Call static resize systems ONLY when orientation changes.
-     */
-    if (orient !== this._prevOrientation) {
-      this._prevOrientation = orient;
-      if (this._resizeStaticChain) {
-        this._resizeStaticChain(orient).execute();
-      }
+  private resizeStatic(
+    orieantation: PixiOrientation,
+    needUpdate: boolean
+  ): void {
+    if (this._resizeStaticChain && needUpdate) {
+      this._resizeStaticChain(orieantation).execute();
     }
   }
 }

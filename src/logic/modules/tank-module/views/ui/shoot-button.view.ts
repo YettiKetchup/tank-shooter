@@ -9,11 +9,7 @@ import {
   TankColor,
 } from '@modules/tank-module/data/types';
 
-import {
-  AmmoCountComponent,
-  AmmoDamageComponent,
-  ShootButtonComponent,
-} from '@modules/tank-module/components';
+import { ShootButtonComponent } from '@modules/tank-module/components';
 
 export const ShootButtonView = (
   collection: EntitiesCollection,
@@ -23,12 +19,7 @@ export const ShootButtonView = (
   const config = AmmoConfig.find((config) => config.type === type) as AmmoData;
   const icon = `bullet_${color}_${type}.png`;
 
-  const components = [
-    new ShootButtonComponent(type, color),
-    new AmmoCountComponent(config.count),
-    new AmmoDamageComponent(config.damage),
-  ];
-
+  const components = [new ShootButtonComponent(type, color)];
   const buttonRef = ButtonView(collection, icon, components);
   const textRef = ShootButtonLabelView(`${config.count}x`);
 

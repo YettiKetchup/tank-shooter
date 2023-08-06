@@ -1,7 +1,6 @@
 import { Container } from 'pixijs';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';
 import { StorageKey } from '@shared/data';
-import { ShootButtonView } from './shoot-button.view';
 
 import {
   ARPositionLandscape,
@@ -11,8 +10,12 @@ import {
   PositionLandscapeComponent,
   PositionPortraitComponent,
 } from '@shared/resize-module';
+import { ShootButtonsFactory } from './shoot-buttons-factory.view';
+import { ShootButtonView } from './shoot-button.view';
 
 export const ShootButtonsGroup = () => {
+  const collection = EntityStorage.get(StorageKey.UI);
+
   const relativePositionLandscape = new ARPositionLandscape({
     xAboveAR: 0.9,
     yAboveAR: 0,
@@ -27,28 +30,13 @@ export const ShootButtonsGroup = () => {
     yBellowAR: 0.85,
   });
 
-  const collection = EntityStorage.get(StorageKey.UI);
-
-  //prettier-ignore
-  return new ViewBuilder(Container)
+  const buttonsGroup = new ViewBuilder(Container)
     .asEntity(collection)
     .withComponent(new PivotLandscapeComponent(1, 0, true))
     .withComponent(new PivotPortraitComponent(0, 1, true))
     .withComponent(relativePositionLandscape)
     .withComponent(relativePositionPortrait)
+    .withFactory(ShootButtonsFactory, collection);
 
-    .withNode(ShootButtonView(collection, 'small'))
-      .asEntity(collection)
-      .withComponent(new PositionLandscapeComponent(0, -90))
-      .withComponent(new PositionPortraitComponent(-70, 0))
-      
-
-    .withNode(ShootButtonView(collection, 'medium'))
-
-    .withNode(ShootButtonView(collection, 'big'))
-      .asEntity(collection)
-      .withComponent(new PositionLandscapeComponent(0, 90))
-      .withComponent(new PositionPortraitComponent(70, 0))
-        
-  .build();
+  return buttonsGroup.build();
 };
