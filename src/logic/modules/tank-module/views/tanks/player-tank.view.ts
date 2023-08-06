@@ -10,7 +10,7 @@ export const PlayerTankView = (collection: EntitiesCollection) => {
     .withPosition(0, 320)
     .withAnchor(0.5, 0.5)
     .asEntity(collection)
-      .withComponent(new PlayerTankComponent())
+    .withComponent(new PlayerTankComponent())
     .withChildren()
       .withNode(Sprite)
         .withTexture(AssetKey.TankRedGun)

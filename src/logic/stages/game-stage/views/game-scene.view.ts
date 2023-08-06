@@ -10,7 +10,7 @@ export const GameSceneView = () => {
   //prettier-ignore
   return new ViewBuilder(Container)
     .asEntity(collection)
-      .withComponent(SmartFitComponent)
+    .withComponent(SmartFitComponent)
     .withChildren()
       .withNode(GameStageEnvironmentView())
       .withNode(PlayerTankView(collection))

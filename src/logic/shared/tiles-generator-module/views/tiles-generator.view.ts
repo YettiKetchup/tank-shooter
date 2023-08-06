@@ -12,7 +12,7 @@ export const TilesGeneratorView = (
   //prettier-ignore
   return new ViewBuilder(Container)
     .asEntity(collection)
-      .withComponent(new TilesGeneratorComponent(tiles, width, height))
-      .withComponent(new TilesMapComponent(tilesMapConfig))
+    .withComponent(new TilesGeneratorComponent(tiles, width, height))
+    .withComponent(new TilesMapComponent(tilesMapConfig))
   .build();
 };

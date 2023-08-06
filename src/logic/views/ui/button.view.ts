@@ -1,4 +1,5 @@
 import { Sprite } from 'pixijs';
+import { AssetKey } from '@shared/data';
 
 import {
   ButtonComponent,
@@ -13,8 +14,6 @@ import {
   EntitiesCollection,
   ViewBuilder,
 } from 'mysh-pixi';
-
-import { AssetKey } from '@shared/data';
 
 export const ButtonView = (
   collection: EntitiesCollection,
@@ -34,10 +33,10 @@ export const ButtonView = (
   const view = new ViewBuilder(Sprite)
     .withAnchor(0.5, 0.5)
     .asEntity(collection)
-      .withComponent(buttonComponent)
-      .withComponent(new ButtonShiftedClick(0, 2))
-      .withComponent(new CursorTypeComponent('pointer'))
-      .withComponent(new ButtonHoldableComponent());
+    .withComponent(buttonComponent)
+    .withComponent(new ButtonShiftedClick(0, 2))
+    .withComponent(new CursorTypeComponent('pointer'))
+    .withComponent(new ButtonHoldableComponent());
 
   /**
    * Add extra components.
