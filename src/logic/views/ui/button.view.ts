@@ -44,7 +44,7 @@ export const ButtonView = (
         .withAnchor(0.5, 0.5)
         .withScale(0.7, 0.7)
         .withPositionY(-2)
-  . endChildren();
+    .endChildren();
 
   return view.build();
 };

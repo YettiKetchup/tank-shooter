@@ -18,7 +18,6 @@
     "@pixi/loaders": "^5.0.4",
     "@pixi/sprite": "^5.0.4",
     "@pixi/ticker": "^5.0.4",
-    "mysh": "^1.0.5",
     "mysh-pixi": "file:../../mysh-pixi",
     "pixijs": "^7.1.4"
   },

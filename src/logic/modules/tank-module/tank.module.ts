@@ -1,35 +1,48 @@
-import { Entity, EntitySubject, Module, includesPipe } from 'mysh-pixi';
-import { ButtonHoldedComponent } from '@shared/modules/interactive-module';
+import { AmmoCountComponent, ShootButtonComponent } from './components';
+import { OnShootStartChain } from './chains';
+import { StorageKey } from '@shared/data';
+import {
+  ButtonHoldedComponent,
+  ButtonPointerDown,
+} from '@shared/modules/interactive-module';
 
 import {
-  AmmoCountComponent,
-  AmmoDamageComponent,
-  ShootButtonComponent,
-} from './components';
+  Chain,
+  EntityStorage,
+  EntitySubject,
+  Module,
+  includesPipe,
+} from 'mysh-pixi';
 
 export class TankModule extends Module {
-  private _shootButtonHold$ = EntitySubject.onChange(ButtonHoldedComponent);
+  private _onShootStartChain: Chain | null = null;
+  private _shootButtonPressed$ = EntitySubject.onAdd(ButtonPointerDown);
 
   init(): void {
+    const collection = EntityStorage.combine('tank-module', [
+      StorageKey.Game,
+      StorageKey.UI,
+    ]);
+
+    this._onShootStartChain = OnShootStartChain(collection);
+
     this.handleshoot();
   }
 
   destroy(): void {
-    this._shootButtonHold$.unsubscribe();
+    this._shootButtonPressed$.unsubscribe();
   }
 
   private handleshoot(): void {
-    const includes = [
-      ShootButtonComponent,
-      AmmoCountComponent,
-      AmmoDamageComponent,
-    ];
+    const includes = [ShootButtonComponent];
 
-    this._shootButtonHold$.pipe(includesPipe(...includes));
-    this._shootButtonHold$.subscribe(this.onShoot.bind(this));
+    this._shootButtonPressed$.pipe(includesPipe(...includes));
+    this._shootButtonPressed$.subscribe(() => {
+      this.onShootStart();
+    });
   }
 
-  private onShoot(entity: Entity): void {
-    // console.log(entity);
+  private onShootStart(): void {
+    this._onShootStartChain?.execute();
   }
 }
