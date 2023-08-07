@@ -1,5 +1,5 @@
 import { ChainBuilder, EntitiesCollection } from 'mysh-pixi';
-import { ShowPowerBarSystem } from '../systems';
+import { BlockAmmoButtons, ShowPowerBarSystem } from '../systems';
 import { DecreaseAmmoCount } from '../systems/decrease-ammo-count.system';
 
 export const OnShootStartChain = (collection: EntitiesCollection) => {
@@ -7,5 +7,6 @@ export const OnShootStartChain = (collection: EntitiesCollection) => {
   return new ChainBuilder(collection)
     .withSystem(new ShowPowerBarSystem(true))
     .withSystem(new DecreaseAmmoCount())
+    .withSystem(new BlockAmmoButtons())
   .build();
 };

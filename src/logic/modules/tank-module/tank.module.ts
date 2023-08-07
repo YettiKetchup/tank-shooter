@@ -1,6 +1,7 @@
-import { AmmoCountComponent } from './components';
-import { OnShootHoldChain, OnShootStartChain } from './chains';
+import { AmmoCountComponent, ShootIndicatorComponent } from './components';
 import { StorageKey } from '@shared/data';
+import { OnShootHoldChain, OnShootStartChain } from './chains';
+
 import {
   ButtonHoldedComponent,
   ButtonPointerDown,
