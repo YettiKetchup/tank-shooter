@@ -1,7 +1,7 @@
-import { PixiEntity, System, SystemEntitiesCollection } from 'mysh-pixi';
+import { System, Filtered } from 'mysh-pixi';
 
-export class InstantiateBulletSystem extends System<PixiEntity> {
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+export class InstantiateBulletSystem extends System {
+  protected onExecute(entities: Filtered): void {
     throw new Error('Method not implemented.');
   }
 }

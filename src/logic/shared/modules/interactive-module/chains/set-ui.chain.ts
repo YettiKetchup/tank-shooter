@@ -9,8 +9,8 @@ import {
 export const SetUIChain = (collection: EntitiesCollection) => {
   //prettier-ignore
   return new ChainBuilder(collection)
-    .withSystem(new SetButtonSystem())
-    .withSystem(new ButtonClickShiftSystem())
-    .withSystem(new DisableButtonSystem())
+    .withSystem(SetButtonSystem)
+    .withSystem(ButtonClickShiftSystem)
+    .withSystem(DisableButtonSystem)
   .build();
 };

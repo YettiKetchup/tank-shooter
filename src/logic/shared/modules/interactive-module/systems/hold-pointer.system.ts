@@ -1,16 +1,10 @@
 import { Container } from 'pixijs';
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-} from 'mysh-pixi';
-
+import { System, Filtered, Includes } from 'mysh-pixi';
 import { ButtonHoldableComponent, ButtonHoldedComponent } from '../components';
 
 @Includes(ButtonHoldableComponent, Container)
-export class HoldPointerSystem extends System<PixiEntity> {
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+export class HoldPointerSystem extends System {
+  protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       let timeoutId: ReturnType<typeof setInterval>;
       const entity$ = entity.observable();

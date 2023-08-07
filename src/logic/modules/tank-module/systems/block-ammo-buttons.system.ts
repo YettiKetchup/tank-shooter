@@ -1,18 +1,11 @@
+import { System, Filtered, Includes, Excludes } from 'mysh-pixi';
 import { ButtonPointerDown, DisabledButtonComponent } from '@shared/modules';
 import { AmmoCountComponent } from '../components';
 
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-  Excludes,
-} from 'mysh-pixi';
-
 @Includes(AmmoCountComponent)
 @Excludes(ButtonPointerDown)
-export class BlockAmmoButtons extends System<PixiEntity> {
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+export class BlockAmmoButtons extends System {
+  protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const entity$ = entity.observable();
 

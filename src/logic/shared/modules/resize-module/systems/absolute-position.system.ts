@@ -1,12 +1,6 @@
 import { Container } from 'pixijs';
+import { System, Filtered, Includes } from 'mysh-pixi';
 import { PixiOrientation } from '../data/types';
-
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-} from 'mysh-pixi';
 
 import {
   PositionLandscapeComponent,
@@ -14,16 +8,14 @@ import {
 } from '../components';
 
 @Includes(PositionLandscapeComponent, PositionPortraitComponent, Container)
-export class AbsolutePositionSystem extends System<PixiEntity> {
-  constructor(private _orientation: PixiOrientation) {
-    super();
-  }
+export class AbsolutePositionSystem extends System {
+  public readonly orientation: PixiOrientation = 'landscape';
 
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+  protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const container = entity.get(Container);
       let position =
-        this._orientation === 'landscape'
+        this.orientation === 'landscape'
           ? entity.get(PositionLandscapeComponent)
           : entity.get(PositionPortraitComponent);
 

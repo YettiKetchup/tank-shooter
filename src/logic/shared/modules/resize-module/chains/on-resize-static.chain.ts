@@ -5,8 +5,8 @@ import { PixiOrientation } from '../data/types';
 export const OnResizeStaticChain = (collection: EntitiesCollection) => {
   //prettier-ignore
   return (orientation: PixiOrientation) => new ChainBuilder(collection)
-    .withSystem(new AbsolutePositionSystem(orientation))
-    .withSystem(new AnchorSystem(orientation))
-    .withSystem(new PivotSystem(orientation))
+    .withSystem(AbsolutePositionSystem, {orientation})
+    .withSystem(AnchorSystem, {orientation})
+    .withSystem(PivotSystem, {orientation})
   .build()
 };

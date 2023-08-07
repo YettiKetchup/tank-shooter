@@ -1,11 +1,5 @@
 import { Sprite } from 'pixijs';
-
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-} from 'mysh-pixi';
+import { System, Filtered, Includes } from 'mysh-pixi';
 
 import {
   ButtonComponent,
@@ -14,8 +8,8 @@ import {
 } from '../components';
 
 @Includes(ButtonComponent, ButtonShiftedClick, Sprite)
-export class ButtonClickShiftSystem extends System<PixiEntity> {
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+export class ButtonClickShiftSystem extends System {
+  protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const sprite = entity.get(Sprite);
       const { x, y } = entity.get(ButtonShiftedClick);

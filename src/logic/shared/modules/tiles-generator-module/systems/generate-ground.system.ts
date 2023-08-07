@@ -1,19 +1,10 @@
 import { Container, Sprite } from 'pixijs';
-
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-  Entity,
-  AssetsLoader,
-} from 'mysh-pixi';
-
+import { System, Filtered, Includes, Entity, AssetsLoader } from 'mysh-pixi';
 import { TilesGeneratorComponent, TilesMapComponent } from '../components';
 
 @Includes(TilesGeneratorComponent, TilesMapComponent, Container)
-export class GenerateGroundSystem extends System<PixiEntity> {
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+export class GenerateGroundSystem extends System {
+  protected onExecute(entities: Filtered): void {
     entities.loop(this.generateEnvironment);
   }
 

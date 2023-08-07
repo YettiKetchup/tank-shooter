@@ -1,24 +1,15 @@
 import { Container } from 'pixijs';
-
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-} from 'mysh-pixi';
-
+import { System, Filtered, Includes } from 'mysh-pixi';
 import { ARPositionLandscape, ARPositionPortrait } from '../components';
 import { PixiOrientation } from '../data/types';
 import { ResizeModuleConfig } from '../data/resize-module.config';
 import { getAspectRatio } from '../utils';
 
 @Includes(ARPositionLandscape, ARPositionPortrait, Container)
-export class ARPositionSystem extends System<PixiEntity> {
-  constructor(private _orientation: PixiOrientation) {
-    super();
-  }
+export class ARPositionSystem extends System {
+  public readonly orientation: PixiOrientation = 'landscape';
 
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+  protected onExecute(entities: Filtered): void {
     const { CURRENT_WIDTH, CURRENT_HEIGHT, ASPECT_RATIO } = ResizeModuleConfig;
     const currentAspect = getAspectRatio(CURRENT_WIDTH, CURRENT_HEIGHT);
 
@@ -26,7 +17,7 @@ export class ARPositionSystem extends System<PixiEntity> {
       const container = entity.get(Container);
 
       const position =
-        this._orientation === 'landscape'
+        this.orientation === 'landscape'
           ? entity.get(ARPositionLandscape)
           : entity.get(ARPositionPortrait);
 

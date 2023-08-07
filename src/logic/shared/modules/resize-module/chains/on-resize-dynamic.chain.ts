@@ -5,8 +5,8 @@ import { ARPositionSystem, ARScaleSystem, SmartFitSystem } from '../systems';
 export const OnResizeDynamicChain = (collection: EntitiesCollection) => {
   //prettier-ignore
   return (orientation: PixiOrientation) => new ChainBuilder(collection)
-    .withSystem(new ARPositionSystem(orientation))
-    .withSystem(new SmartFitSystem())
-    .withSystem(new ARScaleSystem(orientation))
+    .withSystem(ARPositionSystem, {orientation})
+    .withSystem(SmartFitSystem)
+    .withSystem(ARScaleSystem, {orientation})
   .build()
 };

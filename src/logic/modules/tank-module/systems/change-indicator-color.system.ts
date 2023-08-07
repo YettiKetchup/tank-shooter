@@ -1,21 +1,15 @@
 import { Sprite } from 'pixijs';
+import { System, Filtered, Includes } from 'mysh-pixi';
 import { ShootIndicatorComponent } from '../components';
 
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-} from 'mysh-pixi';
-
 @Includes(Sprite, ShootIndicatorComponent)
-export class ChangeIndicatorColor extends System<PixiEntity> {
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+export class ChangeIndicatorColor extends System {
+  protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
+      const view = entity.get(Sprite).children[0] as Sprite;
       const { value, minColor, midColor, maxColor } = entity.get(
         ShootIndicatorComponent
       );
-      const view = entity.get(Sprite).children[0] as Sprite;
 
       if (value <= 0.3) {
         view.tint = minColor;

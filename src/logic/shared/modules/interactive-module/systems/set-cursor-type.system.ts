@@ -1,16 +1,10 @@
 import { Container } from 'pixijs';
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-} from 'mysh-pixi';
-
+import { System, Filtered, Includes } from 'mysh-pixi';
 import { CursorTypeComponent } from '../components';
 
 @Includes(CursorTypeComponent, Container)
-export class SetCursorTypeSystem extends System<PixiEntity> {
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+export class SetCursorTypeSystem extends System {
+  protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const container = entity.get(Container);
       const { type } = entity.get(CursorTypeComponent);

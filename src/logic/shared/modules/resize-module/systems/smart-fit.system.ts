@@ -1,22 +1,11 @@
 import { Container } from 'pixijs';
-
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-} from 'mysh-pixi';
-
+import { System, Filtered, Includes } from 'mysh-pixi';
 import { SmartFitComponent } from '../components';
 import { ResizeModuleConfig } from '../data/resize-module.config';
 
 @Includes(SmartFitComponent, Container)
-export class SmartFitSystem extends System<PixiEntity> {
-  constructor() {
-    super();
-  }
-
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+export class SmartFitSystem extends System {
+  protected onExecute(entities: Filtered): void {
     const { CURRENT_WIDTH, CURRENT_HEIGHT } = ResizeModuleConfig;
 
     entities.loop((entity) => {

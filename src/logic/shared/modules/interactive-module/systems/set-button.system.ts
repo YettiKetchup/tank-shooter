@@ -1,9 +1,8 @@
 import { Sprite, Texture } from 'pixijs';
 
 import {
-  PixiEntity,
   System,
-  SystemEntitiesCollection,
+  Filtered,
   Includes,
   ObservableEntity,
   ComponentType,
@@ -19,8 +18,8 @@ import {
 } from '../components';
 
 @Includes(ButtonComponent, Sprite)
-export class SetButtonSystem extends System<PixiEntity> {
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+export class SetButtonSystem extends System {
+  protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const sprite = entity.get(Sprite);
       const button = entity.get(ButtonComponent);

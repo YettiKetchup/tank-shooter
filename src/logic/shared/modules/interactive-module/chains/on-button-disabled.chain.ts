@@ -9,8 +9,8 @@ import {
 export const OnButtonDisabledChain = (collection: EntitiesCollection) => {
   //prettier-ignore
   return new ChainBuilder(collection)
-    .withSystem(new DisableButtonSystem())
-    .withSystem(new EnableButtonSystem())
-    .withSystem(new AlphaDisabledChildren())
+    .withSystem(DisableButtonSystem)
+    .withSystem(EnableButtonSystem)
+    .withSystem(AlphaDisabledChildren)
   .build();
 };

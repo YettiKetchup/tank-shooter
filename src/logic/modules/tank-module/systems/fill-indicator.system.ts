@@ -1,17 +1,11 @@
 import { Sprite } from 'pixijs';
+import { System, Filtered, Includes } from 'mysh-pixi';
 import { IndicatorFillSpeed, ShootIndicatorComponent } from '../components';
 import { clamp } from '@shared/utils';
 
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-} from 'mysh-pixi';
-
 @Includes(Sprite, ShootIndicatorComponent, IndicatorFillSpeed)
-export class FillIndicatorSystem extends System<PixiEntity> {
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+export class FillIndicatorSystem extends System {
+  protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const indicator$ = entity.get(ShootIndicatorComponent, true);
       const speed = entity.get(IndicatorFillSpeed);

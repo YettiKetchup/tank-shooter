@@ -5,8 +5,8 @@ import { DecreaseAmmoCount } from '../systems/decrease-ammo-count.system';
 export const OnShootStartChain = (collection: EntitiesCollection) => {
   //prettier-ignore
   return new ChainBuilder(collection)
-    .withSystem(new ShowPowerBarSystem(true))
-    .withSystem(new DecreaseAmmoCount())
-    .withSystem(new BlockAmmoButtons())
+    .withSystem(ShowPowerBarSystem, {show: true})
+    .withSystem(DecreaseAmmoCount)
+    .withSystem(BlockAmmoButtons)
   .build();
 };

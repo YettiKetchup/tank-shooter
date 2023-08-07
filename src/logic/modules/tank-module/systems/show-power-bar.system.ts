@@ -1,22 +1,15 @@
 import { Sprite } from 'pixijs';
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-} from 'mysh-pixi';
+import { System, Filtered, Includes } from 'mysh-pixi';
 import { ShootIndicatorComponent } from '../components';
 
 @Includes(Sprite, ShootIndicatorComponent)
-export class ShowPowerBarSystem extends System<PixiEntity> {
-  constructor(private _show: boolean) {
-    super();
-  }
+export class ShowPowerBarSystem extends System {
+  public readonly show: boolean = false;
 
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+  protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const sprite = entity.get(Sprite);
-      sprite.alpha = this._show ? 1 : 0;
+      sprite.alpha = this.show ? 1 : 0;
     });
   }
 }

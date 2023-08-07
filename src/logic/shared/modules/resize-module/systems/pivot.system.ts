@@ -1,27 +1,17 @@
 import { Container } from 'pixijs';
-
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-} from 'mysh-pixi';
-
+import { System, Filtered, Includes } from 'mysh-pixi';
 import { PixiOrientation } from '../data/types';
-
 import { PivotLandscapeComponent, PivotPortraitComponent } from '../components';
 
 @Includes(PivotLandscapeComponent, PivotPortraitComponent, Container)
-export class PivotSystem extends System<PixiEntity> {
-  constructor(private _orientation: PixiOrientation) {
-    super();
-  }
+export class PivotSystem extends System {
+  public readonly orientation: PixiOrientation = 'landscape';
 
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+  protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const container = entity.get(Container);
       let pivot =
-        this._orientation === 'landscape'
+        this.orientation === 'landscape'
           ? entity.get(PivotLandscapeComponent)
           : entity.get(PivotPortraitComponent);
 

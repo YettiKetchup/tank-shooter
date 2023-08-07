@@ -1,17 +1,11 @@
 import { Container, Text } from 'pixijs';
+import { System, Filtered, Includes } from 'mysh-pixi';
 import { ButtonPointerDown } from '@shared/modules';
 import { AmmoCountComponent } from '../components';
 
-import {
-  PixiEntity,
-  System,
-  SystemEntitiesCollection,
-  Includes,
-} from 'mysh-pixi';
-
 @Includes(Container, AmmoCountComponent, ButtonPointerDown)
-export class DecreaseAmmoCount extends System<PixiEntity> {
-  protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
+export class DecreaseAmmoCount extends System {
+  protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const ammo = entity.get(AmmoCountComponent);
       const container = entity.get(Container);
@@ -20,7 +14,6 @@ export class DecreaseAmmoCount extends System<PixiEntity> {
       ) as Text;
 
       ammo.value -= 1;
-
       label.text = `${ammo.value}x`;
     });
   }
