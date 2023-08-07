@@ -1,5 +1,5 @@
-import { ButtonHoldedComponent } from '@shared/interactive-module';
 import { Entity, EntitySubject, Module, includesPipe } from 'mysh-pixi';
+import { ButtonHoldedComponent } from '@shared/modules/interactive-module';
 
 import {
   AmmoCountComponent,

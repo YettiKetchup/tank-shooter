@@ -5,7 +5,7 @@ import { ShootButtonView } from './shoot-button.view';
 import {
   PositionLandscapeComponent,
   PositionPortraitComponent,
-} from '@shared/resize-module';
+} from '@shared/modules/resize-module';
 
 export const ShootButtonsFactory = (
   builder: ViewBuilder<any>,

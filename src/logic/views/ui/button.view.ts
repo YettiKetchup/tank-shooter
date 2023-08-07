@@ -6,7 +6,7 @@ import {
   ButtonHoldableComponent,
   ButtonShiftedClick,
   CursorTypeComponent,
-} from '@shared/interactive-module';
+} from '@shared/modules/interactive-module';
 
 import {
   AssetsLoader,

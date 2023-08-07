@@ -8,7 +8,7 @@ import {
   ARPositionPortrait,
   PivotLandscapeComponent,
   PivotPortraitComponent,
-} from '@shared/resize-module';
+} from '@shared/modules/resize-module';
 
 export const ShootButtonsGroup = () => {
   const collection = EntityStorage.get(StorageKey.UI);

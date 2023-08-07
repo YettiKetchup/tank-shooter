@@ -4,7 +4,7 @@ import { GameStage } from '@stages/game-stage';
 import { manifest } from '@shared/aseets';
 import { stageList } from './data/stage.list';
 import { AssetsLoader, StageController } from 'mysh-pixi';
-import { ResizeModuleConfig } from '@shared/resize-module';
+import { ResizeModuleConfig } from '@shared/modules/resize-module';
 
 export class Game {
   public async init(): Promise<void> {

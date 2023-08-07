@@ -1,4 +1,4 @@
-import { TilesGeneratorView } from '@shared/tiles-generator-module';
+import { TilesGeneratorView } from '@shared/modules/tiles-generator-module';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';
 import { Container } from 'pixijs';
 import { groundGrid, groundMapConfig } from '../data/ground-tiles.data';

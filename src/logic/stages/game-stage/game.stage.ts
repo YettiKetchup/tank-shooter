@@ -1,9 +1,9 @@
 import { RootView } from './views/root.view';
 import { AssetsLoader, PixiStage, Root, Modules } from 'mysh-pixi';
-import { InteractiveModule } from '@shared/interactive-module';
+import { InteractiveModule } from '@shared/modules/interactive-module';
 import { TankModule } from '@modules/tank-module/tank.module';
-import { ResizeModule } from '@shared/resize-module';
-import { TilesGeneratorModule } from '@shared/tiles-generator-module';
+import { ResizeModule } from '@shared/modules/resize-module';
+import { TilesGeneratorModule } from '@shared/modules/tiles-generator-module';
 import { StorageKey } from '@shared/data';
 
 @Root(RootView)
