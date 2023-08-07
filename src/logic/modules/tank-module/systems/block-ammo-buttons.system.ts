@@ -6,16 +6,19 @@ import {
   System,
   SystemEntitiesCollection,
   Includes,
+  Excludes,
 } from 'mysh-pixi';
 
 @Includes(AmmoCountComponent)
+@Excludes(ButtonPointerDown)
 export class BlockAmmoButtons extends System<PixiEntity> {
   protected onExecute(entities: SystemEntitiesCollection<PixiEntity>): void {
     entities.loop((entity) => {
-      if (entity.has([ButtonPointerDown])) return;
-
       const entity$ = entity.observable();
-      entity$.add(new DisabledButtonComponent());
+
+      if (!entity.has([DisabledButtonComponent])) {
+        entity$.add(new DisabledButtonComponent());
+      }
     });
   }
 }

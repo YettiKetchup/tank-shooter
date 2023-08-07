@@ -1,4 +1,5 @@
 import { Sprite } from 'pixijs';
+import { ButtonComponent, DisabledButtonComponent } from '../components';
 
 import {
   PixiEntity,
@@ -6,8 +7,6 @@ import {
   SystemEntitiesCollection,
   Includes,
 } from 'mysh-pixi';
-
-import { ButtonComponent, DisabledButtonComponent } from '../components';
 
 @Includes(ButtonComponent, DisabledButtonComponent, Sprite)
 export class DisableButtonSystem extends System<PixiEntity> {

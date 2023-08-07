@@ -8,3 +8,4 @@ export { ButtonPointerLeave } from './button-pointer-leave.component';
 export { ButtonPointerEnter } from './button-pointer-enter.component';
 export { ButtonHoldableComponent } from './button-holdable.component';
 export { ButtonHoldedComponent } from './button-holded.component';
+export { ChangableDisabledAlpha } from './changable-disabled-alpha.component';

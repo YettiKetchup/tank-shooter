@@ -12,6 +12,7 @@ import {
   ButtonComponent,
   ButtonHoldableComponent,
   ButtonShiftedClick,
+  ChangableDisabledAlpha,
   CursorTypeComponent,
 } from '@shared/modules';
 
@@ -36,6 +37,7 @@ export const ShootButtonView = (
     new CursorTypeComponent('pointer'),
     new ButtonHoldableComponent(),
     new AmmoCountComponent(config.count),
+    new ChangableDisabledAlpha(),
   ];
 
   //prettier-ignore

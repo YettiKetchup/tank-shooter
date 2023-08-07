@@ -20,7 +20,7 @@ export class ButtonComponent {
   }
 
   public get disabled(): Texture {
-    return this._pressed as Texture;
+    return this._disabled as Texture;
   }
 
   constructor(idle: string, hover: string, pressed: string, disabled: string) {
