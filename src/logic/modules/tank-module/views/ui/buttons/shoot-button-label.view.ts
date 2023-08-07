@@ -8,5 +8,8 @@ export const ShootButtonLabelView = (label: string) => {
   });
 
   const text = new Text(label, style);
+  text.anchor.set(0.5, 1);
+  text.position.y = -25;
+
   return text;
 };

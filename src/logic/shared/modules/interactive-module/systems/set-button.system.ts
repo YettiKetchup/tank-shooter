@@ -58,12 +58,17 @@ export class SetButtonSystem extends System<PixiEntity> {
     sprite.texture = texture;
     entity$.add(new componentType());
 
-    this.clearButtonState(entity$, [
-      ButtonPointerUp,
-      ButtonPointerDown,
-      ButtonPointerEnter,
-      ButtonPointerLeave,
-    ]);
+    /**
+     * Clear state in the next frame after all systems finished
+     */
+    setTimeout(() => {
+      this.clearButtonState(entity$, [
+        ButtonPointerUp,
+        ButtonPointerDown,
+        ButtonPointerEnter,
+        ButtonPointerLeave,
+      ]);
+    }, 16);
   }
 
   private removeComponent(
