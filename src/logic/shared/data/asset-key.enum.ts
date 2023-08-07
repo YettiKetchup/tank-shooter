@@ -50,8 +50,6 @@ export enum AssetKey {
   ButtonHovered = 'button_hovered.png',
   ButtonPressed = 'button_prressed.png',
   Crossair = 'crossair.png',
-  HealthbarBackground = 'healthbar_bg.png',
-  HealthbarValue = 'healthbar_value.png',
-  PunchBackground = 'punch_bg.png',
-  PunchValue = 'punch_value.png',
+  BarBackground = 'bar_bg.png',
+  BarValue = 'bar_value.png',
 }
