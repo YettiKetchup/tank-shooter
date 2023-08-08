@@ -19,7 +19,7 @@
     "@pixi/sprite": "^5.0.4",
     "@pixi/ticker": "^5.0.4",
     "gsap": "^3.12.2",
-    "mysh-pixi": "file:../../mysh-pixi",
+    "mysh-pixi": "^0.0.3",
     "pixijs": "^7.1.4"
   },
   "devDependencies": {
