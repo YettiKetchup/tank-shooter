@@ -13,8 +13,8 @@ export const GameSceneView = () => {
     .withComponent(SmartFitComponent)
     .withChildren()
       .withNode(GameStageEnvironmentView())
-      .withNode(PlayerTankView(collection))
       .withNode(EnemyTankView())
+      .withNode(PlayerTankView(collection))
     .endChildren()
   .build();
 };

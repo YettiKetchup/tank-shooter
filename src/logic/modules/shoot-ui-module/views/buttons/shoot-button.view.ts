@@ -3,9 +3,14 @@ import { EntitiesCollection, ViewBuilder } from 'mysh-pixi';
 import { AssetKey } from '@shared/data';
 import { ButtonIconView } from './button-icon.view';
 import { ShootButtonLabelView } from './shoot-button-label.view';
-import { AmmoCountComponent } from '@modules/shoot-ui-module/components';
 import { ProjectileType } from '@modules/shoot-ui-module/data/types';
-import { getAmmoData } from '@widgets/tank-module/utils';
+import { getAmmoData } from '@modules/shoot-ui-module/utils';
+
+import {
+  AmmoCountComponent,
+  ShootButtonComponent,
+} from '@modules/shoot-ui-module/components';
+
 import {
   ButtonComponent,
   ButtonHoldableComponent,
@@ -33,6 +38,7 @@ export const ShootButtonView = (
     new ButtonShiftedClick(0, 2),
     new CursorTypeComponent('pointer'),
     new ButtonHoldableComponent(),
+    new ShootButtonComponent(config.type, config.damage),
     new AmmoCountComponent(config.count),
     new ChangableDisabledAlpha(),
   ];

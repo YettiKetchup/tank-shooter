@@ -9,7 +9,6 @@ export class AnimateGunkOnHold extends System {
   protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const gun = entity.get(Sprite).children[0];
-
       gun.y = this.indicatorValue * 10;
     });
   }
