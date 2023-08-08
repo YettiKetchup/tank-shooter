@@ -17,6 +17,6 @@ export const ShootPowerIndicator = () => {
       .withComponent(shootIndicatorComponent)
     .withAlpha(0)
     .withAngle(90)
-    .withPosition(50, 195)
+    .withPosition(75, 320)
   .build();
 };

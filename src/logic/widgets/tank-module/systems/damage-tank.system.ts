@@ -8,8 +8,13 @@ export class DamageTankSystem extends System {
 
   protected onExecute(entities: Filtered<Entity>): void {
     entities.loop((entity) => {
+      let { health } = entity.get(TankComponent);
+
+      health -= this.damage;
+      if (health <= 0) health = 0;
+
       const tank$ = entity.get(TankComponent, true);
-      tank$.health -= this.damage;
+      tank$.health = health;
     });
   }
 }

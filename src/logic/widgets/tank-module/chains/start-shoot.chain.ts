@@ -4,6 +4,7 @@ import { ProjectileData } from '@shared/data';
 import {
   InstantiateCrossairSystem,
   InstantiateProjectileSystem,
+  ShowCrossairSystem,
 } from '../systems';
 
 export const StartShootChain = (projectileData: ProjectileData) => {
@@ -13,6 +14,7 @@ export const StartShootChain = (projectileData: ProjectileData) => {
   return new ChainBuilder()
     .withSystem(InstantiateCrossairSystem, {flyDistance})
       .withIncludes(PlayerTankComponent)
+    .withSystem(ShowCrossairSystem, {show: false})
     .withSystem(InstantiateProjectileSystem, {type})
       .withIncludes(PlayerTankComponent)
     .build();

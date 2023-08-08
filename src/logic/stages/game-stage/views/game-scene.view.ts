@@ -1,11 +1,11 @@
 import { ViewBuilder, EntityStorage } from 'mysh-pixi';
 import { Container } from 'pixijs';
-import { EnemyTankComponent, PlayerTankComponent } from '@widgets/tank-module';
+import { EnemyTankView, PlayerTankView } from '@widgets/tank-module';
 import { GameStageEnvironmentView } from '@modules/environment-module';
 import { SmartFitComponent } from '@shared/modules/resize-module';
 import { StorageKey } from '@shared/data';
-import { TankView } from '@widgets/tank-module/views/tank.view';
-import { IntersectableComponent } from '@shared/modules';
+import { ShootPowerIndicator } from '@modules/shoot-ui-module';
+import { EnemyHealthbarView } from '@modules/healtbar-module';
 
 export const GameSceneView = () => {
   const collection = EntityStorage.get(StorageKey.Game);
@@ -15,10 +15,13 @@ export const GameSceneView = () => {
     .withComponent(SmartFitComponent)
     .withChildren()
       .withNode(GameStageEnvironmentView())
-      .withNode(TankView('enemy', new EnemyTankComponent(), new IntersectableComponent())) 
+      .withNode(EnemyTankView()) 
         .withPosition(0, -320)
         .withAngle(180)
-      .withNode(TankView('player', new PlayerTankComponent(), new IntersectableComponent()))
+      .withNode(EnemyHealthbarView())
+        .withPositionY(-400)
+      .withNode(ShootPowerIndicator())
+      .withNode(PlayerTankView())
         .withPosition(0, 320)
     .endChildren()
   .build();

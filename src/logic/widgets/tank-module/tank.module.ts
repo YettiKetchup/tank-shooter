@@ -31,8 +31,11 @@ import {
   Module,
   includesPipe,
 } from 'mysh-pixi';
+import { EnemyTankComponent, TankComponent } from './components';
+import { OnTankDamaged } from './chains/on-tank-damaged.chain';
 
 export class TankModule extends Module {
+  private _onTankDamaged$ = EntitySubject.onChange(TankComponent);
   private _onProjectileFall$ = EntitySubject.onAdd(ProjectileFallComponent);
   private _shootButtonPressed$ = EntitySubject.onAdd(ButtonPointerDown);
   private _onIndicatorFills$ = EntitySubject.onChange(ShootIndicatorComponent);
@@ -45,6 +48,7 @@ export class TankModule extends Module {
       StorageKey.Game,
       StorageKey.UI,
     ]);
+    this.handleTankDamage(collection);
     this.handleProjectileFall(collection);
     this.handleShootButtonClick(collection);
     this.handleAiming(collection);
@@ -52,10 +56,25 @@ export class TankModule extends Module {
   }
 
   destroy(): void {
+    this._onTankDamaged$.unsubscribe();
     this._onProjectileFall$.unsubscribe();
     this._shootButtonPressed$.unsubscribe();
     this._onIndicatorFills$.unsubscribe();
     this._shootButtonUnpressed$.unsubscribe();
+  }
+
+  private handleTankDamage(collection: EntitiesCollection): void {
+    this._onTankDamaged$.pipe(includesPipe(EnemyTankComponent));
+    this._onTankDamaged$.subscribe((entity) => {
+      const tank = entity.get(TankComponent);
+      OnTankDamaged(tank).execute(collection);
+
+      console.log('wtf');
+
+      if (tank.health <= 0) {
+        console.log('FINISH GAME, SHOW UI!');
+      }
+    });
   }
 
   private handleProjectileFall(collection: EntitiesCollection): void {
