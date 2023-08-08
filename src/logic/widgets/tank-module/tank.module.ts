@@ -68,12 +68,6 @@ export class TankModule extends Module {
     this._onTankDamaged$.subscribe((entity) => {
       const tank = entity.get(TankComponent);
       OnTankDamaged(tank).execute(collection);
-
-      console.log('wtf');
-
-      if (tank.health <= 0) {
-        console.log('FINISH GAME, SHOW UI!');
-      }
     });
   }
 
