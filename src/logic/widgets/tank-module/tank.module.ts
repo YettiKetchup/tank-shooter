@@ -1,6 +1,5 @@
 import { StorageKey } from '@shared/data';
 import { getProjectileData } from '@shared/utils';
-import { OnProjectileCreate } from './chains/on-projectile-create.chain';
 import { ProjectileComponent, ProjectileFallComponent } from './components';
 
 import {
@@ -30,9 +29,7 @@ import {
 } from 'mysh-pixi';
 
 export class TankModule extends Module {
-  // private _onProjectileCreate$ = EntitySubject.onAdd(ProjectileComponent);
-  // private _onProjectileFall$ = EntitySubject.onAdd(ProjectileFallComponent);
-
+  private _onProjectileFall$ = EntitySubject.onAdd(ProjectileFallComponent);
   private _shootButtonPressed$ = EntitySubject.onAdd(ButtonPointerDown);
   private _onIndicatorFills$ = EntitySubject.onChange(ShootIndicatorComponent);
   private _shootButtonUnpressed$ = EntitySubject.onRemove(
@@ -44,32 +41,25 @@ export class TankModule extends Module {
       StorageKey.Game,
       StorageKey.UI,
     ]);
-    // this.handleProjectileFall(collection);
+    this.handleProjectileFall(collection);
     this.handleShootButtonClick(collection);
     this.handleAiming(collection);
     this.handleShoot(collection);
   }
 
   destroy(): void {
-    // this._onProjectileCreate$.unsubscribe();
-    // this._onProjectileFall$.unsubscribe();
+    this._onProjectileFall$.unsubscribe();
     this._shootButtonPressed$.unsubscribe();
     this._onIndicatorFills$.unsubscribe();
     this._shootButtonUnpressed$.unsubscribe();
   }
 
-  private handleProjectileCreation(collection: EntitiesCollection): void {
-    // this._onProjectileCreate$.subscribe(() => {
-    //   OnProjectileCreate().execute(collection);
-    // });
-  }
-
   private handleProjectileFall(collection: EntitiesCollection): void {
-    // this._onProjectileFall$.pipe(includesPipe(ProjectileComponent));
-    // this._onProjectileFall$.subscribe((entity: Entity) => {
-    //   const projectile = entity.get(ProjectileComponent);
-    //   OnProjectileFallChain(projectile).execute(collection);
-    // });
+    this._onProjectileFall$.pipe(includesPipe(ProjectileComponent));
+    this._onProjectileFall$.subscribe((entity: Entity) => {
+      const projectile = entity.get(ProjectileComponent);
+      OnProjectileFallChain(projectile).execute(collection);
+    });
   }
 
   private handleShootButtonClick(collection: EntitiesCollection): void {

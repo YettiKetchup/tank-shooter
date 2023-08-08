@@ -18,7 +18,7 @@ export const GameSceneView = () => {
       .withNode(TankView('enemy', new EnemyTankComponent(), new IntersectableComponent())) 
         .withPosition(0, -320)
         .withAngle(180)
-      .withNode(TankView('player', new PlayerTankComponent()))
+      .withNode(TankView('player', new PlayerTankComponent(), new IntersectableComponent()))
         .withPosition(0, 320)
     .endChildren()
   .build();

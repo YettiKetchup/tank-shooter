@@ -4,3 +4,4 @@ export { InstantiateCrossairSystem } from './instantiate-crossair.systen';
 export { MoveCrossairSystem } from './move-crossair.system';
 export { AnimateProjectileSystem } from './animate-projectile.system';
 export { SetProjectileDelta } from './set-projectile-delta.system';
+export { DamageTankSystem } from './damage-tank.system';
