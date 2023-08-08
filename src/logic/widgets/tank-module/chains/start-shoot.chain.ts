@@ -1,9 +1,19 @@
 import { ChainBuilder } from 'mysh-pixi';
-import { InstantiateCrossairSystem } from '../systems';
+import { PlayerTankComponent } from '../components';
+import { ProjectileData } from '@shared/data';
+import {
+  InstantiateCrossairSystem,
+  InstantiateProjectileSystem,
+} from '../systems';
 
-export const StartShootChain = () => {
+export const StartShootChain = (projectileData: ProjectileData) => {
+  const { flyDistance, type } = projectileData;
+
   //prettier-ignore
   return new ChainBuilder()
-    .withSystem(InstantiateCrossairSystem)
-  .build()
+    .withSystem(InstantiateCrossairSystem, {flyDistance})
+      .withIncludes(PlayerTankComponent)
+    .withSystem(InstantiateProjectileSystem, {type})
+      .withIncludes(PlayerTankComponent)
+    .build();
 };

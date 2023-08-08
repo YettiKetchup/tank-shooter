@@ -1,4 +1,5 @@
 import { StorageKey } from '@shared/data';
+import { getProjectileData } from '@shared/utils';
 import { OnProjectileCreate } from './chains/on-projectile-create.chain';
 import { ProjectileComponent, ProjectileFallComponent } from './components';
 
@@ -15,7 +16,6 @@ import {
 } from '@shared/modules/interactive-module';
 
 import {
-  AmmoCountComponent,
   ShootButtonComponent,
   ShootIndicatorComponent,
 } from '@modules/shoot-ui-module/components';
@@ -30,8 +30,9 @@ import {
 } from 'mysh-pixi';
 
 export class TankModule extends Module {
-  private _onProjectileCreate$ = EntitySubject.onAdd(ProjectileComponent);
-  private _onProjectileFall$ = EntitySubject.onAdd(ProjectileFallComponent);
+  // private _onProjectileCreate$ = EntitySubject.onAdd(ProjectileComponent);
+  // private _onProjectileFall$ = EntitySubject.onAdd(ProjectileFallComponent);
+
   private _shootButtonPressed$ = EntitySubject.onAdd(ButtonPointerDown);
   private _onIndicatorFills$ = EntitySubject.onChange(ShootIndicatorComponent);
   private _shootButtonUnpressed$ = EntitySubject.onRemove(
@@ -43,41 +44,41 @@ export class TankModule extends Module {
       StorageKey.Game,
       StorageKey.UI,
     ]);
-
-    // this.handleProjectileCreation(collection);
     // this.handleProjectileFall(collection);
-    // this.handleShootButtonClick(collection);
-    // this.handleAiming(collection);
-    // this.handleShoot(collection);
+    this.handleShootButtonClick(collection);
+    this.handleAiming(collection);
+    this.handleShoot(collection);
   }
 
   destroy(): void {
-    this._onProjectileCreate$.unsubscribe();
-    this._onProjectileFall$.unsubscribe();
+    // this._onProjectileCreate$.unsubscribe();
+    // this._onProjectileFall$.unsubscribe();
     this._shootButtonPressed$.unsubscribe();
     this._onIndicatorFills$.unsubscribe();
     this._shootButtonUnpressed$.unsubscribe();
   }
 
   private handleProjectileCreation(collection: EntitiesCollection): void {
-    this._onProjectileCreate$.subscribe(() => {
-      OnProjectileCreate().execute(collection);
-    });
+    // this._onProjectileCreate$.subscribe(() => {
+    //   OnProjectileCreate().execute(collection);
+    // });
   }
 
   private handleProjectileFall(collection: EntitiesCollection): void {
-    this._onProjectileFall$.pipe(includesPipe(ProjectileComponent));
-
-    this._onProjectileFall$.subscribe((entity: Entity) => {
-      const projectile = entity.get(ProjectileComponent);
-      OnProjectileFallChain(projectile).execute(collection);
-    });
+    // this._onProjectileFall$.pipe(includesPipe(ProjectileComponent));
+    // this._onProjectileFall$.subscribe((entity: Entity) => {
+    //   const projectile = entity.get(ProjectileComponent);
+    //   OnProjectileFallChain(projectile).execute(collection);
+    // });
   }
 
   private handleShootButtonClick(collection: EntitiesCollection): void {
-    this._shootButtonPressed$.pipe(includesPipe(AmmoCountComponent));
-    this._shootButtonPressed$.subscribe(() => {
-      StartShootChain().execute(collection);
+    this._shootButtonPressed$.pipe(includesPipe(ShootButtonComponent));
+    this._shootButtonPressed$.subscribe((entity: Entity) => {
+      const shootButton = entity.get(ShootButtonComponent);
+      const projectile = getProjectileData(shootButton.type);
+
+      StartShootChain(projectile).execute(collection);
     });
   }
 
@@ -90,10 +91,8 @@ export class TankModule extends Module {
 
   private handleShoot(collection: EntitiesCollection): void {
     this._shootButtonUnpressed$.pipe(includesPipe(ShootButtonComponent));
-
-    this._shootButtonUnpressed$.subscribe((entity) => {
-      const shootButton = entity.get(ShootButtonComponent);
-      OnShootChain(shootButton).execute(collection);
+    this._shootButtonUnpressed$.subscribe(() => {
+      OnShootChain().execute(collection);
     });
   }
 }

@@ -1,3 +1,3 @@
 export class CrossairComponent {
-  public distanceDelta: number = 0;
+  constructor(public maxDistance: number) {}
 }

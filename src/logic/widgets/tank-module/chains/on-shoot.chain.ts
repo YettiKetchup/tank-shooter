@@ -1,10 +1,9 @@
-import { ShootButtonComponent } from '@modules/shoot-ui-module/components';
 import { ChainBuilder } from 'mysh-pixi';
-import { InstantiateProjectileSystem } from '../systems';
+import { AnimateProjectileSystem } from '../systems';
 
-export const OnShootChain = (shootType: ShootButtonComponent) => {
+export const OnShootChain = () => {
   //prettier-ignore
   return new ChainBuilder()
-    // .withSystem(InstantiateProjectileSystem, {type: shootType.type, distance: shootType.distance})
+    .withSystem(AnimateProjectileSystem)
   .build();
 };

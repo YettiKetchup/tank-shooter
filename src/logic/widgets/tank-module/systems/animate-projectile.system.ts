@@ -2,21 +2,22 @@ import { gsap } from 'gsap';
 import { Entity, Filtered, System, Includes } from 'mysh-pixi';
 import { ProjectileComponent, ProjectileFallComponent } from '../components';
 import { Sprite } from 'pixijs';
-import { getProjectileData } from '@shared/utils';
 
 @Includes(Sprite, ProjectileComponent)
 export class AnimateProjectileSystem extends System {
   protected onExecute(entities: Filtered<Entity>): void {
     entities.loop((entity) => {
       const sprite = entity.get(Sprite);
-      const { distance, type } = entity.get(ProjectileComponent);
-      const { flyDistance, speed } = getProjectileData(type);
-      const flyTo = -distance * flyDistance;
+      const projectile = entity.get(ProjectileComponent);
+
+      const flyTo = projectile.distanceDelta * projectile.flyDistance;
+      const time = flyTo / projectile.speed;
       const flyTimeline = gsap.timeline();
-      const time = Math.abs(flyTo / speed);
+
+      sprite.alpha = 1;
 
       flyTimeline.to(sprite, {
-        y: flyTo,
+        y: -flyTo,
         duration: time,
         ease: 'none',
         onComplete: () => {

@@ -11,8 +11,7 @@ export class MoveCrossairSystem extends System {
       const crossair = entity.get(CrossairComponent);
       const view = entity.get(Sprite);
 
-      view.position.y = -800 * this.distanceDelta;
-      crossair.distanceDelta = this.distanceDelta;
+      view.position.y = -crossair.maxDistance * this.distanceDelta;
     });
   }
 }

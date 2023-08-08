@@ -4,14 +4,10 @@ import { ProjectileComponent } from '@widgets/tank-module/components';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';
 import { Sprite } from 'pixijs';
 
-export const ProjectileView = (
-  type: ProjectileType,
-  damage: number,
-  distance: number
-) => {
+export const ProjectileView = (type: ProjectileType) => {
   const collection = EntityStorage.get(StorageKey.Game);
   const texture = `bullet_red_${type}.png`;
-  const projectileComponent = new ProjectileComponent(damage, distance, type);
+  const projectileComponent = new ProjectileComponent(type);
 
   //prettier-ignore
   return new ViewBuilder(Sprite)
