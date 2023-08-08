@@ -1,6 +1,6 @@
-import { AmmoCountComponent } from './components';
 import { StorageKey } from '@shared/data';
 import { OnShootEndChain, OnShootHoldChain, OnShootStartChain } from './chains';
+import { AmmoCountComponent } from './components';
 
 import {
   ButtonHoldedComponent,
@@ -15,7 +15,7 @@ import {
   includesPipe,
 } from 'mysh-pixi';
 
-export class TankModule extends Module {
+export class ShootUIModule extends Module {
   private _onShootStartChain: Chain | null = null;
   private _onShootHoldChain: Chain | null = null;
   private _onShootEndChain: Chain | null = null;
@@ -25,10 +25,7 @@ export class TankModule extends Module {
   private _shootButtonUnhold$ = EntitySubject.onRemove(ButtonHoldedComponent);
 
   init(): void {
-    const collection = EntityStorage.combine('tank-module', [
-      StorageKey.Game,
-      StorageKey.UI,
-    ]);
+    const collection = EntityStorage.get(StorageKey.UI);
 
     this._onShootStartChain = OnShootStartChain(collection);
     this._onShootHoldChain = OnShootHoldChain(collection);

@@ -1,11 +1,7 @@
 import { StorageKey } from '@shared/data';
 import { BarView } from '@views/ui';
 import { ViewBuilder, EntityStorage } from 'mysh-pixi';
-
-import {
-  IndicatorFillSpeed,
-  ShootIndicatorComponent,
-} from '@modules/tank-module/components';
+import { IndicatorFillSpeed, ShootIndicatorComponent } from '../components';
 
 export const ShootPowerIndicator = () => {
   const collection = EntityStorage.get(StorageKey.UI);

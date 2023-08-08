@@ -1,6 +1,5 @@
 import { ChainBuilder, EntitiesCollection } from 'mysh-pixi';
-import { ShowPowerBarSystem } from '../systems';
-import { DecreaseAmmoCount } from '../systems/decrease-ammo-count.system';
+import { DecreaseAmmoCount, ShowPowerBarSystem } from '../systems';
 
 export const OnShootStartChain = (collection: EntitiesCollection) => {
   //prettier-ignore

@@ -1,9 +1,9 @@
+import { ViewBuilder } from 'mysh-pixi';
+import { Container } from 'pixijs';
 import {
   ShootButtonsGroup,
   ShootPowerIndicator,
-} from '@modules/tank-module/views/ui';
-import { ViewBuilder } from 'mysh-pixi';
-import { Container } from 'pixijs';
+} from '@modules/shoot-ui-module';
 
 export const GameUIView = () => {
   //prettier-ignore

@@ -3,10 +3,9 @@ import { EntitiesCollection, ViewBuilder } from 'mysh-pixi';
 import { AssetKey } from '@shared/data';
 import { ButtonIconView } from './button-icon.view';
 import { ShootButtonLabelView } from './shoot-button-label.view';
-import { AmmoCountComponent } from '@modules/tank-module/components';
-import { ProjectileType, TankColor } from '@modules/tank-module/data/types';
-import { getAmmoData } from '@modules/tank-module/utils';
-
+import { AmmoCountComponent } from '@modules/shoot-ui-module/components';
+import { ProjectileType } from '@modules/shoot-ui-module/data/types';
+import { getAmmoData } from '@widgets/tank-module/utils';
 import {
   ButtonComponent,
   ButtonHoldableComponent,
@@ -17,11 +16,10 @@ import {
 
 export const ShootButtonView = (
   collection: EntitiesCollection,
-  type: ProjectileType,
-  color: TankColor = 'red'
+  type: ProjectileType
 ) => {
   const config = getAmmoData(type);
-  const icon = `bullet_${color}_${type}.png`;
+  const icon = `bullet_red_${type}.png`;
 
   const buttonComponent = new ButtonComponent(
     AssetKey.Button,

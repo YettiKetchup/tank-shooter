@@ -1,7 +1,6 @@
-import { AmmoConfig } from '@modules/tank-module/data/ammo.config';
 import { EntitiesCollection, ViewBuilder } from 'mysh-pixi';
 import { ShootButtonView } from './shoot-button.view';
-
+import { AmmoConfig } from '@modules/shoot-ui-module/data/ammo.config';
 import {
   PositionLandscapeComponent,
   PositionPortraitComponent,
