@@ -1,3 +1,1 @@
-export class EnemyTankComponent {
-  constructor(public health: number) {}
-}
+export class EnemyTankComponent {}

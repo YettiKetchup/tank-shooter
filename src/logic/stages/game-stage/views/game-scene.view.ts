@@ -1,9 +1,10 @@
 import { ViewBuilder, EntityStorage } from 'mysh-pixi';
 import { Container } from 'pixijs';
-import { EnemyTankView, PlayerTankView } from '@widgets/tank-module';
+import { EnemyTankComponent, PlayerTankComponent } from '@widgets/tank-module';
 import { GameStageEnvironmentView } from '@modules/environment-module';
 import { SmartFitComponent } from '@shared/modules/resize-module';
 import { StorageKey } from '@shared/data';
+import { TankView } from '@widgets/tank-module/views/tanks/tank.view';
 
 export const GameSceneView = () => {
   const collection = EntityStorage.get(StorageKey.Game);
@@ -13,8 +14,11 @@ export const GameSceneView = () => {
     .withComponent(SmartFitComponent)
     .withChildren()
       .withNode(GameStageEnvironmentView())
-      .withNode(EnemyTankView(collection))
-      .withNode(PlayerTankView(collection))
+      .withNode(TankView('enemy', new EnemyTankComponent())) 
+        .withPosition(0, -320)
+        .withAngle(180)
+      .withNode(TankView('player', new PlayerTankComponent()))
+        .withPosition(0, 320)
     .endChildren()
   .build();
 };

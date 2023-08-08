@@ -11,10 +11,9 @@ export class InstantiateProjectileSystem extends System {
 
   protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
-      const shootPoint = entity.get(PlayerTankComponent).shootPoint;
-      const projectile = ProjectileView(this.type, this.damage, this.distance);
-
-      shootPoint.addChild(projectile);
+      // const shootPoint = entity.get(PlayerTankComponent).shootPoint;
+      // const projectile = ProjectileView(this.type, this.damage, this.distance);
+      // shootPoint.addChild(projectile);
     });
   }
 }
