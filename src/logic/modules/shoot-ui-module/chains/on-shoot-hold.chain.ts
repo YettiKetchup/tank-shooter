@@ -3,9 +3,8 @@ import { ChangeIndicatorColor, FillIndicatorSystem } from '../systems';
 import { ShootButtonComponent } from '../components';
 
 export const OnShootHoldChain = (shootButton: ShootButtonComponent) => {
-  //prettier-ignore
   return new ChainBuilder()
-    .withSystem(FillIndicatorSystem, {fillSpeed: shootButton.chargingSpeed})
+    .withSystem(FillIndicatorSystem, { fillSpeed: shootButton.chargingSpeed })
     .withSystem(ChangeIndicatorColor)
-  .build();
+    .build();
 };

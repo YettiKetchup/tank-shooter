@@ -6,10 +6,9 @@ import {
 } from '../systems';
 
 export const OnButtonDisabledChain = () => {
-  //prettier-ignore
   return new ChainBuilder()
     .withSystem(DisableButtonSystem)
     .withSystem(EnableButtonSystem)
     .withSystem(AlphaDisabledChildren)
-  .build();
+    .build();
 };

@@ -3,10 +3,9 @@ import { AbsolutePositionSystem, AnchorSystem, PivotSystem } from '../systems';
 import { PixiOrientation } from '../data/types';
 
 export const OnResizeStaticChain = (orientation: PixiOrientation) => {
-  //prettier-ignore
   return new ChainBuilder()
-    .withSystem(AbsolutePositionSystem, {orientation})
-    .withSystem(AnchorSystem, {orientation})
-    .withSystem(PivotSystem, {orientation})
-  .build()
+    .withSystem(AbsolutePositionSystem, { orientation })
+    .withSystem(AnchorSystem, { orientation })
+    .withSystem(PivotSystem, { orientation })
+    .build();
 };

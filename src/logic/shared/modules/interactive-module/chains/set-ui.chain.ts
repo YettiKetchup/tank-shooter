@@ -6,10 +6,9 @@ import {
 } from '../systems';
 
 export const SetUIChain = () => {
-  //prettier-ignore
   return new ChainBuilder()
     .withSystem(SetButtonSystem)
     .withSystem(ButtonClickShiftSystem)
     .withSystem(DisableButtonSystem)
-  .build();
+    .build();
 };

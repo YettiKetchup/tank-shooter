@@ -3,10 +3,9 @@ import { PixiOrientation } from '../data/types';
 import { ARPositionSystem, ARScaleSystem, SmartFitSystem } from '../systems';
 
 export const OnResizeDynamicChain = (orientation: PixiOrientation) => {
-  //prettier-ignore
   return new ChainBuilder()
-    .withSystem(ARPositionSystem, {orientation})
+    .withSystem(ARPositionSystem, { orientation })
     .withSystem(SmartFitSystem)
-    .withSystem(ARScaleSystem, {orientation})
-  .build()
+    .withSystem(ARScaleSystem, { orientation })
+    .build();
 };
