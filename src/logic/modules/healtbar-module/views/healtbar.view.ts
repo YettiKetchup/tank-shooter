@@ -7,7 +7,7 @@ export const HealthbarView = (...components: Component[]) => {
   const collection = EntityStorage.get(StorageKey.Game);
 
   //prettier-ignore
-  return new ViewBuilder(BarView(1, 0x016064))
+  return new ViewBuilder(BarView(1, 0x74b72e))
     .withAngle(180)
     .asEntity(collection)
       .withComponents([new HealthbarComponent(), ...components])
