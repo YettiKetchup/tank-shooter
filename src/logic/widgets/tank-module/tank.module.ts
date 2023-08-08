@@ -1,6 +1,13 @@
 import { StorageKey } from '@shared/data';
-import { AimingChain, OnShootChain, StartShootChain } from './chains';
-import { ProjectileComponent } from './components';
+import { OnProjectileCreate } from './chains/on-projectile-create.chain';
+import { ProjectileComponent, ProjectileFallComponent } from './components';
+
+import {
+  AimingChain,
+  OnProjectileFallChain,
+  OnShootChain,
+  StartShootChain,
+} from './chains';
 
 import {
   ButtonHoldedComponent,
@@ -21,10 +28,10 @@ import {
   Module,
   includesPipe,
 } from 'mysh-pixi';
-import { OnProjectileCreate } from './chains/on-projectile-create.chain';
 
 export class TankModule extends Module {
-  private _onProjectileCreate = EntitySubject.onAdd(ProjectileComponent);
+  private _onProjectileCreate$ = EntitySubject.onAdd(ProjectileComponent);
+  private _onProjectileFall$ = EntitySubject.onAdd(ProjectileFallComponent);
   private _shootButtonPressed$ = EntitySubject.onAdd(ButtonPointerDown);
   private _onIndicatorFills$ = EntitySubject.onChange(ShootIndicatorComponent);
   private _shootButtonUnpressed$ = EntitySubject.onRemove(
@@ -38,21 +45,32 @@ export class TankModule extends Module {
     ]);
 
     this.handleProjectileCreation(collection);
+    this.handleProjectileFall(collection);
     this.handleShootButtonClick(collection);
     this.handleAiming(collection);
     this.handleShoot(collection);
   }
 
   destroy(): void {
-    this._onProjectileCreate.unsubscribe();
+    this._onProjectileCreate$.unsubscribe();
+    this._onProjectileFall$.unsubscribe();
     this._shootButtonPressed$.unsubscribe();
     this._onIndicatorFills$.unsubscribe();
     this._shootButtonUnpressed$.unsubscribe();
   }
 
   private handleProjectileCreation(collection: EntitiesCollection): void {
-    this._onProjectileCreate.subscribe(() => {
+    this._onProjectileCreate$.subscribe(() => {
       OnProjectileCreate(collection).execute();
+    });
+  }
+
+  private handleProjectileFall(collection: EntitiesCollection): void {
+    this._onProjectileFall$.pipe(includesPipe(ProjectileComponent));
+
+    this._onProjectileFall$.subscribe((entity: Entity) => {
+      const projectile = entity.get(ProjectileComponent);
+      OnProjectileFallChain(collection, projectile).execute();
     });
   }
 

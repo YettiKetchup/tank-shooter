@@ -1,4 +1,4 @@
-import { ProjectileType } from '@modules/shoot-ui-module/data/types';
+import { ProjectileType } from '@shared/data';
 
 export class ProjectileComponent {
   constructor(

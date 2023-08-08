@@ -1,5 +1,4 @@
-import { ProjectileType } from '@modules/shoot-ui-module/data/types';
-import { StorageKey } from '@shared/data';
+import { ProjectileType, StorageKey } from '@shared/data';
 import { IntersectableComponent } from '@shared/modules';
 import { ProjectileComponent } from '@widgets/tank-module/components';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';

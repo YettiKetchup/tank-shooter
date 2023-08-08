@@ -1,4 +1,4 @@
-import { ProjectileType } from '../data/types';
+import { ProjectileType } from '@shared/data';
 
 export class ShootButtonComponent {
   constructor(

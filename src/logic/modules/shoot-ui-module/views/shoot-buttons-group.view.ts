@@ -2,7 +2,6 @@ import { Container } from 'pixijs';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';
 import { StorageKey } from '@shared/data';
 import { ShootButtonsFactory } from './buttons/shoot-buttons-factory.view';
-
 import {
   ARPositionLandscape,
   ARPositionPortrait,

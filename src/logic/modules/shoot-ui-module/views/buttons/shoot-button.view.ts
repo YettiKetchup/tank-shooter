@@ -1,10 +1,9 @@
 import { Sprite } from 'pixijs';
 import { EntitiesCollection, ViewBuilder } from 'mysh-pixi';
-import { AssetKey } from '@shared/data';
+import { AssetKey, ProjectileType } from '@shared/data';
 import { ButtonIconView } from './button-icon.view';
 import { ShootButtonLabelView } from './shoot-button-label.view';
-import { ProjectileType } from '@modules/shoot-ui-module/data/types';
-import { getAmmoData } from '@modules/shoot-ui-module/utils';
+import { getProjectileData } from '@shared/utils';
 
 import {
   AmmoCountComponent,
@@ -23,7 +22,7 @@ export const ShootButtonView = (
   collection: EntitiesCollection,
   type: ProjectileType
 ) => {
-  const config = getAmmoData(type);
+  const config = getProjectileData(type);
   const icon = `bullet_red_${type}.png`;
 
   const buttonComponent = new ButtonComponent(

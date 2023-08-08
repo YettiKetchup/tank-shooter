@@ -1,6 +1,6 @@
 export type ProjectileType = 'small' | 'medium' | 'big';
 
-export type AmmoData = {
+export type ProjectileData = {
   type: ProjectileType;
   count: number;
   damage: number;

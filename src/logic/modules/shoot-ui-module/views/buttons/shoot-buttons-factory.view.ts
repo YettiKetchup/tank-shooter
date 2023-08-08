@@ -1,6 +1,6 @@
 import { EntitiesCollection, ViewBuilder } from 'mysh-pixi';
 import { ShootButtonView } from './shoot-button.view';
-import { AmmoConfig } from '@modules/shoot-ui-module/data/ammo.config';
+import { projectileConfig } from '@shared/data';
 import {
   PositionLandscapeComponent,
   PositionPortraitComponent,
@@ -10,7 +10,7 @@ export const ShootButtonsFactory = (
   builder: ViewBuilder<any>,
   collection: EntitiesCollection
 ) => {
-  const buttons = AmmoConfig.map((ammo) => {
+  const buttons = projectileConfig.map((ammo) => {
     return ShootButtonView(collection, ammo.type);
   });
 

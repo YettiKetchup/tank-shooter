@@ -1,6 +1,6 @@
 import { System, Filtered, Includes } from 'mysh-pixi';
 import { PlayerTankComponent } from '../components';
-import { ProjectileType } from '@modules/shoot-ui-module/data/types';
+import { ProjectileType } from '@shared/data';
 import { ProjectileView } from '../views/projectile/projectile.view';
 
 @Includes(PlayerTankComponent)

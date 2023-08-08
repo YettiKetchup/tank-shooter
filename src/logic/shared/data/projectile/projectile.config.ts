@@ -1,6 +1,6 @@
-import { AmmoData } from './types';
+import { ProjectileData } from './types';
 
-export const AmmoConfig: AmmoData[] = [
+export const projectileConfig: ProjectileData[] = [
   {
     type: 'small',
     damage: 15,

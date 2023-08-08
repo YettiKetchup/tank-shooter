@@ -10,9 +10,4 @@ export const OnShootChain = (
   return new ChainBuilder(collection)
     .withSystem(InstantiateProjectileSystem, {type: shootType.type, distance: shootType.distance})
   .build();
-  /**
-   * Создать снаряд определенного типа +
-   * Убрать индикатор +
-   * Заанимировать вістрел пушки
-   */
 };
