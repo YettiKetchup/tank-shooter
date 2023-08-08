@@ -1,5 +1,5 @@
+import { AnimateProjectileSystem } from '@modules/projectile-module';
 import { ChainBuilder } from 'mysh-pixi';
-import { AnimateProjectileSystem } from '../systems';
 
 export const OnShootChain = () => {
   //prettier-ignore

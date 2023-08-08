@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 import { Entity, Filtered, System, Includes } from 'mysh-pixi';
-import { ProjectileComponent, ProjectileFallComponent } from '../components';
 import { Sprite } from 'pixijs';
+import { ProjectileComponent, ProjectileFallComponent } from '../components';
 
 @Includes(Sprite, ProjectileComponent)
 export class AnimateProjectileSystem extends System {
@@ -16,6 +16,7 @@ export class AnimateProjectileSystem extends System {
 
       sprite.alpha = 1;
 
+      //TODO: Clean up this mess
       flyTimeline.to(sprite, {
         y: -flyTo,
         duration: time,

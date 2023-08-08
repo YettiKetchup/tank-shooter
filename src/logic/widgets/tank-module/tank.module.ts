@@ -1,6 +1,10 @@
 import { StorageKey } from '@shared/data';
 import { getProjectileData } from '@shared/utils';
-import { ProjectileComponent, ProjectileFallComponent } from './components';
+
+import {
+  ProjectileComponent,
+  ProjectileFallComponent,
+} from '@modules/projectile-module';
 
 import {
   AimingChain,

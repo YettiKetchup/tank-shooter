@@ -1,8 +1,8 @@
+import { Sprite } from 'pixijs';
 import { ProjectileType, StorageKey } from '@shared/data';
 import { IntersectableComponent } from '@shared/modules';
-import { ProjectileComponent } from '@widgets/tank-module/components';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';
-import { Sprite } from 'pixijs';
+import { ProjectileComponent } from '../components';
 
 export const ProjectileView = (type: ProjectileType) => {
   const collection = EntityStorage.get(StorageKey.Game);

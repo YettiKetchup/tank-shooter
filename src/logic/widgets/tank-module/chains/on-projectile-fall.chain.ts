@@ -1,7 +1,8 @@
 import { ChainBuilder } from 'mysh-pixi';
-import { EnemyTankComponent, ProjectileComponent } from '../components';
+import { EnemyTankComponent } from '../components';
 import { DamageTankSystem } from '../systems';
 import { DetectIntersectionSystem } from '@shared/modules';
+import { ProjectileComponent } from '@modules/projectile-module';
 
 export const OnProjectileFallChain = (projectile: ProjectileComponent) => {
   //prettier-ignore

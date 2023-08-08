@@ -4,7 +4,7 @@ import { EnemyTankComponent, PlayerTankComponent } from '@widgets/tank-module';
 import { GameStageEnvironmentView } from '@modules/environment-module';
 import { SmartFitComponent } from '@shared/modules/resize-module';
 import { StorageKey } from '@shared/data';
-import { TankView } from '@widgets/tank-module/views/tanks/tank.view';
+import { TankView } from '@widgets/tank-module/views/tank.view';
 import { IntersectableComponent } from '@shared/modules';
 
 export const GameSceneView = () => {

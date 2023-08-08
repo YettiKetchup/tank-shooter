@@ -1,10 +1,7 @@
 import { ShootIndicatorComponent } from '@modules/shoot-ui-module/components';
 import { ChainBuilder } from 'mysh-pixi';
-import {
-  AnimateGunkOnHold,
-  MoveCrossairSystem,
-  SetProjectileDelta,
-} from '../systems';
+import { AnimateGunkOnHold, MoveCrossairSystem } from '../systems';
+import { SetProjectileDelta } from '@modules/projectile-module';
 
 export const AimingChain = (indicator: ShootIndicatorComponent) => {
   //prettier-ignore

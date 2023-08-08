@@ -1,7 +1,7 @@
 import { StorageKey } from '@shared/data';
 import { TankType } from '@shared/data/tank';
 import { getTankData } from '@shared/utils';
-import { TankComponent } from '@widgets/tank-module/components/tank.component';
+import { TankComponent } from '@widgets/tank-module/components';
 import { Component, EntityStorage, ViewBuilder } from 'mysh-pixi';
 import { Container, Sprite } from 'pixijs';
 
