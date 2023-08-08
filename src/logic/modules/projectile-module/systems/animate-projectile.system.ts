@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
-import { Entity, Filtered, System, Includes } from 'mysh-pixi';
 import { Sprite } from 'pixijs';
+import { Entity, Filtered, System, Includes } from 'mysh-pixi';
 import { ProjectileComponent, ProjectileFallComponent } from '../components';
 
 @Includes(Sprite, ProjectileComponent)

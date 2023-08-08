@@ -1,5 +1,7 @@
 import { StorageKey } from '@shared/data';
 import { getProjectileData } from '@shared/utils';
+import { EnemyTankComponent, TankComponent } from './components';
+import { OnTankDamaged } from './chains/on-tank-damaged.chain';
 
 import {
   ProjectileComponent,
@@ -31,8 +33,6 @@ import {
   Module,
   includesPipe,
 } from 'mysh-pixi';
-import { EnemyTankComponent, TankComponent } from './components';
-import { OnTankDamaged } from './chains/on-tank-damaged.chain';
 
 export class TankModule extends Module {
   private _onTankDamaged$ = EntitySubject.onChange(TankComponent);
