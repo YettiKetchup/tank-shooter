@@ -27,11 +27,11 @@ export class InteractiveModule extends Module {
       this._collectionKeys
     );
 
-    const setInteractivity = SetInteractivityChain(this._collection);
-    const setUi = SetUIChain(this._collection);
+    const setInteractivity = SetInteractivityChain();
+    const setUi = SetUIChain();
 
-    setInteractivity.execute();
-    setUi.execute();
+    setInteractivity.execute(this._collection);
+    setUi.execute(this._collection);
 
     this._buttonDisabled$.subscribe(this._onButtonDisabled.bind(this));
     this._buttonEnabled$.subscribe(this._onButtonDisabled.bind(this));
@@ -43,7 +43,7 @@ export class InteractiveModule extends Module {
   }
 
   private _onButtonDisabled(): void {
-    const disabledButton = OnButtonDisabledChain(this.collection);
-    disabledButton.execute();
+    const disabledButton = OnButtonDisabledChain();
+    disabledButton.execute(this.collection);
   }
 }

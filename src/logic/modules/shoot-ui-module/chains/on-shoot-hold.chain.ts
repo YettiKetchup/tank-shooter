@@ -1,10 +1,11 @@
-import { ChainBuilder, EntitiesCollection } from 'mysh-pixi';
+import { ChainBuilder } from 'mysh-pixi';
 import { ChangeIndicatorColor, FillIndicatorSystem } from '../systems';
+import { ShootButtonComponent } from '../components';
 
-export const OnShootHoldChain = (collection: EntitiesCollection) => {
+export const OnShootHoldChain = (shootButton: ShootButtonComponent) => {
   //prettier-ignore
-  return new ChainBuilder(collection)
-    .withSystem(FillIndicatorSystem)
+  return new ChainBuilder()
+    .withSystem(FillIndicatorSystem, {fillSpeed: shootButton.chargingSpeed})
     .withSystem(ChangeIndicatorColor)
   .build();
 };

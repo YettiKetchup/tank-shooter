@@ -7,6 +7,7 @@ export const projectileConfig: ProjectileData[] = [
     count: 30,
     flyDistance: 800,
     speed: 700,
+    chargingSpeed: 0.01,
   },
   {
     type: 'medium',
@@ -14,6 +15,7 @@ export const projectileConfig: ProjectileData[] = [
     count: 20,
     flyDistance: 800,
     speed: 800,
+    chargingSpeed: 0.015,
   },
   {
     type: 'big',
@@ -21,5 +23,6 @@ export const projectileConfig: ProjectileData[] = [
     count: 10,
     flyDistance: 800,
     speed: 900,
+    chargingSpeed: 0.02,
   },
 ];

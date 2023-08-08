@@ -1,9 +1,9 @@
-import { ChainBuilder, EntitiesCollection } from 'mysh-pixi';
+import { ChainBuilder } from 'mysh-pixi';
 import { AnimateProjectileSystem } from '../systems';
 
-export const OnProjectileCreate = (collection: EntitiesCollection) => {
+export const OnProjectileCreate = () => {
   //prettier-ignore
-  return new ChainBuilder(collection)
+  return new ChainBuilder()
     .withSystem(AnimateProjectileSystem)
   .build();
 };

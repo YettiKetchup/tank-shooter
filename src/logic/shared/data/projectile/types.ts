@@ -6,4 +6,5 @@ export type ProjectileData = {
   damage: number;
   flyDistance: number;
   speed: number;
+  chargingSpeed: number;
 };

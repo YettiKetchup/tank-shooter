@@ -1,9 +1,9 @@
-import { EntitiesCollection, ChainBuilder } from 'mysh-pixi';
+import { ChainBuilder } from 'mysh-pixi';
 import { HoldPointerSystem, SetCursorTypeSystem } from '../systems';
 
-export const SetInteractivityChain = (collection: EntitiesCollection) => {
+export const SetInteractivityChain = () => {
   //prettier-ignore
-  return new ChainBuilder(collection)
+  return new ChainBuilder()
     .withSystem(HoldPointerSystem)
     .withSystem(SetCursorTypeSystem)
   .build();

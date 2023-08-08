@@ -1,10 +1,9 @@
-import { ChainBuilder, EntitiesCollection } from 'mysh-pixi';
+import { ChainBuilder } from 'mysh-pixi';
 import { BlockAmmoButtons, ShowPowerBarSystem } from '../systems';
 
-export const OnShootEndChain = (collection: EntitiesCollection) => {
-  //prettier-ignore
-  return new ChainBuilder(collection)
+export const OnShootEndChain = () => {
+  return new ChainBuilder()
     .withSystem(BlockAmmoButtons)
-    .withSystem(ShowPowerBarSystem, {show: false})
-  .build();
+    .withSystem(ShowPowerBarSystem, { show: false })
+    .build();
 };

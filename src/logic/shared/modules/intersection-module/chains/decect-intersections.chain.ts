@@ -1,9 +1,9 @@
-import { ChainBuilder, EntitiesCollection } from 'mysh-pixi';
+import { ChainBuilder } from 'mysh-pixi';
 import { DetectIntersectionSystem } from '../systems';
 
-export const DetectIntersectionsChain = (colelction: EntitiesCollection) => {
+export const DetectIntersectionsChain = () => {
   //prettier-ignore
-  return new ChainBuilder(colelction)
+  return new ChainBuilder()
     .withSystem(DetectIntersectionSystem)
   .build();
 };

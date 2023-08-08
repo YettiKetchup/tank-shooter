@@ -37,7 +37,7 @@ export const ShootButtonView = (
     new ButtonShiftedClick(0, 2),
     new CursorTypeComponent('pointer'),
     new ButtonHoldableComponent(),
-    new ShootButtonComponent(config.type, config.damage),
+    new ShootButtonComponent(config.type, config.chargingSpeed),
     new AmmoCountComponent(config.count),
     new ChangableDisabledAlpha(),
   ];

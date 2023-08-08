@@ -1,9 +1,9 @@
-import { ChainBuilder, EntitiesCollection } from 'mysh-pixi';
+import { ChainBuilder } from 'mysh-pixi';
 import { InstantiateCrossairSystem } from '../systems';
 
-export const StartShootChain = (colelction: EntitiesCollection) => {
+export const StartShootChain = () => {
   //prettier-ignore
-  return new ChainBuilder(colelction)
+  return new ChainBuilder()
     .withSystem(InstantiateCrossairSystem)
   .build()
 };

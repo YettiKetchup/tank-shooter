@@ -1,10 +1,10 @@
-import { ChainBuilder, EntitiesCollection } from 'mysh-pixi';
+import { ChainBuilder } from 'mysh-pixi';
 import { AbsolutePositionSystem, AnchorSystem, PivotSystem } from '../systems';
 import { PixiOrientation } from '../data/types';
 
-export const OnResizeStaticChain = (collection: EntitiesCollection) => {
+export const OnResizeStaticChain = (orientation: PixiOrientation) => {
   //prettier-ignore
-  return (orientation: PixiOrientation) => new ChainBuilder(collection)
+  return new ChainBuilder()
     .withSystem(AbsolutePositionSystem, {orientation})
     .withSystem(AnchorSystem, {orientation})
     .withSystem(PivotSystem, {orientation})

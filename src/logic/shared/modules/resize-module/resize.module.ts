@@ -1,4 +1,4 @@
-import { EntityStorage, Module } from 'mysh-pixi';
+import { EntitiesCollection, EntityStorage, Module } from 'mysh-pixi';
 import { PixiOrientation, ResizeChainCalback } from './data/types';
 import { OnResizeStaticChain, OnResizeDynamicChain } from './chains/';
 import { orientation } from './utils/orientation.util';
@@ -7,8 +7,7 @@ import { EntitySubject } from 'mysh-pixi';
 import { ForceResizeComponent } from './components';
 
 export class ResizeModule extends Module {
-  private _resizeStaticChain: ResizeChainCalback | null = null;
-  private _resizeDynamicChain: ResizeChainCalback | null = null;
+  private _collection: EntitiesCollection | null = null;
   private _prevOrientation: PixiOrientation | null = null;
   private _onForceResize$ = EntitySubject.onAdd(ForceResizeComponent);
 
@@ -17,13 +16,10 @@ export class ResizeModule extends Module {
   }
 
   init(): void {
-    const collection = EntityStorage.combine(
+    this._collection = EntityStorage.combine(
       'resize-module',
       this._collectionKeys
     );
-
-    this._resizeStaticChain = OnResizeStaticChain(collection);
-    this._resizeDynamicChain = OnResizeDynamicChain(collection);
 
     if (!ResizeModuleConfig.NODE) return;
 
@@ -53,17 +49,19 @@ export class ResizeModule extends Module {
   }
 
   private resizeDynamic(orieantation: PixiOrientation): void {
-    if (this._resizeDynamicChain) {
-      this._resizeDynamicChain(orieantation).execute();
-    }
+    OnResizeDynamicChain(orieantation).execute(
+      this._collection as EntitiesCollection
+    );
   }
 
   private resizeStatic(
     orieantation: PixiOrientation,
     needUpdate: boolean
   ): void {
-    if (this._resizeStaticChain && needUpdate) {
-      this._resizeStaticChain(orieantation).execute();
+    if (needUpdate) {
+      OnResizeStaticChain(orieantation).execute(
+        this._collection as EntitiesCollection
+      );
     }
   }
 }

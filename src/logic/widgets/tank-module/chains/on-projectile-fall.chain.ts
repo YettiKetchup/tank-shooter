@@ -1,12 +1,9 @@
-import { ChainBuilder, EntitiesCollection } from 'mysh-pixi';
+import { ChainBuilder } from 'mysh-pixi';
 import { ProjectileComponent } from '../components';
 
-export const OnProjectileFallChain = (
-  collection: EntitiesCollection,
-  projectile: ProjectileComponent
-) => {
+export const OnProjectileFallChain = (projectile: ProjectileComponent) => {
   //prettier-ignore
-  return new ChainBuilder(collection)
+  return new ChainBuilder()
   .build();
 };
 

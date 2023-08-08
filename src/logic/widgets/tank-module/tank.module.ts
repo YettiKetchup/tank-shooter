@@ -44,11 +44,11 @@ export class TankModule extends Module {
       StorageKey.UI,
     ]);
 
-    this.handleProjectileCreation(collection);
-    this.handleProjectileFall(collection);
-    this.handleShootButtonClick(collection);
-    this.handleAiming(collection);
-    this.handleShoot(collection);
+    // this.handleProjectileCreation(collection);
+    // this.handleProjectileFall(collection);
+    // this.handleShootButtonClick(collection);
+    // this.handleAiming(collection);
+    // this.handleShoot(collection);
   }
 
   destroy(): void {
@@ -61,7 +61,7 @@ export class TankModule extends Module {
 
   private handleProjectileCreation(collection: EntitiesCollection): void {
     this._onProjectileCreate$.subscribe(() => {
-      OnProjectileCreate(collection).execute();
+      OnProjectileCreate().execute(collection);
     });
   }
 
@@ -70,21 +70,21 @@ export class TankModule extends Module {
 
     this._onProjectileFall$.subscribe((entity: Entity) => {
       const projectile = entity.get(ProjectileComponent);
-      OnProjectileFallChain(collection, projectile).execute();
+      OnProjectileFallChain(projectile).execute(collection);
     });
   }
 
   private handleShootButtonClick(collection: EntitiesCollection): void {
     this._shootButtonPressed$.pipe(includesPipe(AmmoCountComponent));
     this._shootButtonPressed$.subscribe(() => {
-      StartShootChain(collection).execute();
+      StartShootChain().execute(collection);
     });
   }
 
   private handleAiming(collection: EntitiesCollection): void {
     this._onIndicatorFills$.subscribe((entity: Entity) => {
       const indicator = entity.get(ShootIndicatorComponent);
-      AimingChain(collection, indicator).execute();
+      AimingChain(indicator).execute(collection);
     });
   }
 
@@ -93,7 +93,7 @@ export class TankModule extends Module {
 
     this._shootButtonUnpressed$.subscribe((entity) => {
       const shootButton = entity.get(ShootButtonComponent);
-      OnShootChain(collection, shootButton).execute();
+      OnShootChain(shootButton).execute(collection);
     });
   }
 }

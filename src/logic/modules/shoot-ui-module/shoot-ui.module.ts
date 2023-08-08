@@ -1,6 +1,6 @@
 import { StorageKey } from '@shared/data';
+import { ShootButtonComponent } from './components';
 import { OnShootEndChain, OnShootHoldChain, OnShootStartChain } from './chains';
-import { AmmoCountComponent } from './components';
 
 import {
   ButtonHoldedComponent,
@@ -8,7 +8,8 @@ import {
 } from '@shared/modules/interactive-module';
 
 import {
-  Chain,
+  EntitiesCollection,
+  Entity,
   EntityStorage,
   EntitySubject,
   Module,
@@ -16,22 +17,13 @@ import {
 } from 'mysh-pixi';
 
 export class ShootUIModule extends Module {
-  private _onShootStartChain: Chain | null = null;
-  private _onShootHoldChain: Chain | null = null;
-  private _onShootEndChain: Chain | null = null;
-
   private _shootButtonPressed$ = EntitySubject.onAdd(ButtonPointerDown);
   private _shootButtonHolded$ = EntitySubject.onChange(ButtonHoldedComponent);
   private _shootButtonUnhold$ = EntitySubject.onRemove(ButtonHoldedComponent);
 
   init(): void {
     const collection = EntityStorage.get(StorageKey.UI);
-
-    this._onShootStartChain = OnShootStartChain(collection);
-    this._onShootHoldChain = OnShootHoldChain(collection);
-    this._onShootEndChain = OnShootEndChain(collection);
-
-    this.handleshoot();
+    this.handleshoot(collection);
   }
 
   destroy(): void {
@@ -40,27 +32,24 @@ export class ShootUIModule extends Module {
     this._shootButtonUnhold$.unsubscribe();
   }
 
-  private handleshoot(): void {
-    const includes = [AmmoCountComponent];
+  private handleshoot(collection: EntitiesCollection): void {
+    const includes = [ShootButtonComponent];
 
     this._shootButtonPressed$.pipe(includesPipe(...includes));
     this._shootButtonHolded$.pipe(includesPipe(...includes));
     this._shootButtonUnhold$.pipe(includesPipe(...includes));
 
-    this._shootButtonPressed$.subscribe(this.onShootStart.bind(this));
-    this._shootButtonHolded$.subscribe(this.onShootHold.bind(this));
-    this._shootButtonUnhold$.subscribe(this.onShootEnd.bind(this));
-  }
+    this._shootButtonPressed$.subscribe(() => {
+      OnShootStartChain().execute(collection);
+    });
 
-  private onShootStart(): void {
-    this._onShootStartChain?.execute();
-  }
+    this._shootButtonHolded$.subscribe((entity: Entity) => {
+      const shootButton = entity.get(ShootButtonComponent);
+      OnShootHoldChain(shootButton).execute(collection);
+    });
 
-  private onShootHold(): void {
-    this._onShootHoldChain?.execute();
-  }
-
-  private onShootEnd(): void {
-    this._onShootEndChain?.execute();
+    this._shootButtonUnhold$.subscribe(() => {
+      OnShootEndChain().execute(collection);
+    });
   }
 }
