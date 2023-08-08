@@ -5,4 +5,5 @@ export type AmmoData = {
   count: number;
   damage: number;
   flyDistance: number;
+  speed: number;
 };
