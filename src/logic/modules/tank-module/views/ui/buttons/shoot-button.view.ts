@@ -1,6 +1,5 @@
 import { Sprite } from 'pixijs';
 import { EntitiesCollection, ViewBuilder } from 'mysh-pixi';
-import { AmmoConfig } from '@modules/tank-module/data/ammo.config';
 import { AssetKey } from '@shared/data';
 import { ButtonIconView } from './button-icon.view';
 import { ShootButtonLabelView } from './shoot-button-label.view';

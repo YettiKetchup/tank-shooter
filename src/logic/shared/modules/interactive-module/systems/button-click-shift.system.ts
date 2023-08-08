@@ -21,7 +21,6 @@ export class ButtonClickShiftSystem extends System {
       });
 
       sprite.on('pointerup', () => {
-        if (entity.has([DisabledButtonComponent])) return;
         sprite.x -= x;
         sprite.y -= y;
       });
