@@ -52,4 +52,7 @@ export enum AssetKey {
   Crossair = 'crossair.png',
   BarBackground = 'bar_bg.png',
   BarValue = 'bar_value.png',
+
+  //FX
+  ExplosionCloud = 'explosion_cloud.png',
 }

@@ -1,4 +1,4 @@
-import { Sprite } from 'pixijs';
+import { Sprite } from '@pixi/sprite';
 import { EntitiesCollection, ViewBuilder } from 'mysh-pixi';
 import { AssetKey, ProjectileType } from '@shared/data';
 import { ButtonIconView } from './button-icon.view';

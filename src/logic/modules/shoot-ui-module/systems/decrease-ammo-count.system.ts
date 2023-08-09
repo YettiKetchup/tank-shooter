@@ -1,4 +1,5 @@
-import { Container, Text } from 'pixijs';
+import { Container } from '@pixi/display';
+import { Text } from '@pixi/text';
 import { System, Filtered, Includes } from 'mysh-pixi';
 import { ButtonPointerDown } from '@shared/modules';
 import { AmmoCountComponent } from '../components';

@@ -1,4 +1,4 @@
-import { Text } from 'pixijs';
+import { Text } from '@pixi/text';
 import { Entity, Filtered, System, Includes, StageController } from 'mysh-pixi';
 import { TimerComponent } from '../components';
 import { GameStage } from '@stages/game-stage';

@@ -1,4 +1,4 @@
-import { ProjectileType } from '@shared/data';
+import { ParticleCallback, ProjectileType } from '@shared/data';
 import { getProjectileData } from '@shared/utils';
 
 export class ProjectileComponent {
@@ -6,11 +6,13 @@ export class ProjectileComponent {
   public damage: number = 0;
   public flyDistance: number = 0;
   public speed: number = 0;
+  public particles: ParticleCallback | null = null;
 
   constructor(public type: ProjectileType) {
     const data = getProjectileData(type);
     this.damage = data.damage;
     this.flyDistance = data.flyDistance;
     this.speed = data.speed;
+    this.particles = data.particles;
   }
 }

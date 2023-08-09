@@ -1,5 +1,5 @@
+import { Sprite } from '@pixi/sprite';
 import { Entity, Filtered, System, Includes } from 'mysh-pixi';
-import { Sprite } from 'pixijs';
 import { CrossairComponent } from '../components';
 
 @Includes(Sprite, CrossairComponent)

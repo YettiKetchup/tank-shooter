@@ -1,4 +1,4 @@
-import { TextStyle, Text } from 'pixijs';
+import { TextStyle, Text } from '@pixi/text';
 
 export const EndGameText = (label: string, size: number = 46) => {
   const style = new TextStyle({
