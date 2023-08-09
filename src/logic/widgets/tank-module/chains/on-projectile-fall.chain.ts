@@ -2,11 +2,13 @@ import { ChainBuilder } from 'mysh-pixi';
 import { CrossairComponent, EnemyTankComponent } from '../components';
 import { DamageTankSystem } from '../systems';
 import { DetectIntersectionSystem } from '@shared/modules';
+import { DestroyEntitySystem } from '@systems/destroy-entity.system';
+
 import {
   ProjectileComponent,
   ProjectileExplode,
 } from '@modules/projectile-module';
-import { DestroyEntitySystem } from '@systems/destroy-entity.system';
+
 import {
   BlockAmmoButtons,
   ClearIndicatorSystem,
@@ -28,12 +30,6 @@ export const OnProjectileFallChain = (projectile: ProjectileComponent) => {
       .withIncludes(CrossairComponent)
 
     .withSystem(ClearIndicatorSystem)
-
     .withSystem(BlockAmmoButtons, {block: false})
-      .withDelay(1000)
   .build();
 };
-
-/**
- * Партиклы взрыва
- */

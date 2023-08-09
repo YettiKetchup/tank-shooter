@@ -15,6 +15,6 @@ export const ProjectileView = (type: ProjectileType) => {
       .withComponent(projectileComponent, true)
       .withComponent(IntersectableComponent)
     .withTexture(texture)
-    .withAnchor(0.5, 1)
+    .withAnchor(0.5, 0.5)
   .build();
 };
