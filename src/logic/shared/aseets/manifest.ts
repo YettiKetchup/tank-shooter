@@ -23,6 +23,10 @@ export const manifest = {
           name: 'Bubbles',
           srcs: './assets/fonts/glowing-bubble/glowing-bubble.ttf',
         },
+        {
+          name: 'explosion_cloud.png',
+          srcs: '/assets/textures/explosion-fx/explosion_cloud.png',
+        },
       ],
     },
   ],

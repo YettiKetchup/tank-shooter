@@ -1,7 +1,6 @@
 import { AssetKey } from '@shared/data';
 import { ViewBuilder } from 'mysh-pixi';
 import { Sprite } from '@pixi/sprite';
-import * as particles from '@pixi/particle-emitter';
 
 export const BarView = (progress: number = 0, color: number = 0xffffff) => {
   //prettier-ignore
