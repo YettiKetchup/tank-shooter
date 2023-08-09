@@ -2,6 +2,7 @@ import { gsap } from 'gsap';
 import { Sprite } from '@pixi/sprite';
 import { ProjectileComponent, ProjectileFallComponent } from '../components';
 import { Entity, Filtered, System, Includes } from 'mysh-pixi';
+import { clamp } from '@shared/utils';
 
 @Includes(Sprite, ProjectileComponent)
 export class AnimateProjectileSystem extends System {
@@ -10,9 +11,10 @@ export class AnimateProjectileSystem extends System {
       const sprite = entity.get(Sprite);
       const projectile = entity.get(ProjectileComponent);
 
-      const flyTo = projectile.distanceDelta * projectile.flyDistance;
-      const scaleTo = 2 / projectile.distanceDelta;
       const time = 0.8;
+      const flyTo = projectile.distanceDelta * projectile.flyDistance;
+      let scaleTo = 2 / projectile.distanceDelta;
+      scaleTo = clamp(scaleTo, 1, 3.5);
 
       sprite.alpha = 1;
 
