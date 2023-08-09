@@ -18,6 +18,7 @@
     "@pixi/core": "^7.2.4",
     "@pixi/display": "^7.2.4",
     "@pixi/events": "^7.2.4",
+    "@pixi/mixin-get-global-position": "^7.2.4",
     "@pixi/particle-emitter": "^5.0.8",
     "@pixi/sprite": "^7.2.4",
     "@pixi/text": "^7.2.4",

@@ -6,6 +6,7 @@ import { TreesView } from './trees.view';
 import { BarricadesView } from './barricades.view';
 import { DecorationsView } from './decorations.view';
 import { StorageKey } from '@shared/data';
+import { DecalableComponent } from '@shared/modules';
 
 export const GameStageEnvironmentView = () => {
   const collection = EntityStorage.get(StorageKey.Game);
@@ -13,6 +14,9 @@ export const GameStageEnvironmentView = () => {
   //prettier-ignore
   return new ViewBuilder(Container)
     .withNode(TilesGeneratorView(collection, groundGrid, groundMapConfig))
+    .withNode(Container)
+      .asEntity(collection)
+      .withComponent(DecalableComponent)
     .withNode(TreesView())
     .withNode(BarricadesView())
     .withNode(DecorationsView())

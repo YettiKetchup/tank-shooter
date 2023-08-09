@@ -55,4 +55,5 @@ export enum AssetKey {
 
   //FX
   ExplosionCloud = 'explosion_cloud.png',
+  CracksDecal = 'cracks_decal.png',
 }

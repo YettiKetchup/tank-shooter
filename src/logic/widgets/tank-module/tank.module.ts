@@ -33,6 +33,7 @@ import {
   Module,
   includesPipe,
 } from 'mysh-pixi';
+import { Container } from '@pixi/display';
 
 export class TankModule extends Module {
   private _onTankDamaged$ = EntitySubject.onChange(TankComponent);
@@ -72,10 +73,13 @@ export class TankModule extends Module {
   }
 
   private handleProjectileFall(collection: EntitiesCollection): void {
-    this._onProjectileFall$.pipe(includesPipe(ProjectileComponent));
+    this._onProjectileFall$.pipe(includesPipe(ProjectileComponent, Container));
+
     this._onProjectileFall$.subscribe((entity: Entity) => {
       const projectile = entity.get(ProjectileComponent);
-      OnProjectileFallChain(projectile).execute(collection);
+      const container = entity.get(Container);
+
+      OnProjectileFallChain(projectile, container).execute(collection);
     });
   }
 
