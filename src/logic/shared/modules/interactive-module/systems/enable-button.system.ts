@@ -1,4 +1,4 @@
-import { Sprite } from 'pixijs';
+import { Sprite } from '@pixi/sprite';
 import { System, Filtered, Includes, Excludes } from 'mysh-pixi';
 import { ButtonComponent, DisabledButtonComponent } from '../components';
 

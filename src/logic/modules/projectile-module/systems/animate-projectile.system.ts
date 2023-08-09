@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
-import { Sprite } from 'pixijs';
-import { Entity, Filtered, System, Includes } from 'mysh-pixi';
+import { Sprite } from '@pixi/sprite';
 import { ProjectileComponent, ProjectileFallComponent } from '../components';
+import { Entity, Filtered, System, Includes } from 'mysh-pixi';
 
 @Includes(Sprite, ProjectileComponent)
 export class AnimateProjectileSystem extends System {

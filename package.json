@@ -13,13 +13,17 @@
     "build": "webpack"
   },
   "dependencies": {
-    "@pixi/app": "^5.0.4",
-    "@pixi/core": "^5.0.4",
-    "@pixi/loaders": "^5.0.4",
-    "@pixi/sprite": "^5.0.4",
-    "@pixi/ticker": "^5.0.4",
+    "@pixi/app": "^7.2.4",
+    "@pixi/assets": "^7.2.4",
+    "@pixi/core": "^7.2.4",
+    "@pixi/display": "^7.2.4",
+    "@pixi/events": "^7.2.4",
+    "@pixi/particle-emitter": "^5.0.8",
+    "@pixi/sprite": "^7.2.4",
+    "@pixi/text": "^7.2.4",
+    "@pixi/ticker": "^7.2.4",
     "gsap": "^3.12.2",
-    "mysh-pixi": "^0.0.3",
+    "mysh-pixi": "^0.0.4",
     "pixijs": "^7.1.4"
   },
   "devDependencies": {

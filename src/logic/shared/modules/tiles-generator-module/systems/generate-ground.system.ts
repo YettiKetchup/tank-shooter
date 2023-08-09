@@ -1,4 +1,5 @@
-import { Container, Sprite } from 'pixijs';
+import { Container } from '@pixi/display';
+import { Sprite } from '@pixi/sprite';
 import { System, Filtered, Includes, Entity, AssetsLoader } from 'mysh-pixi';
 import { TilesGeneratorComponent, TilesMapComponent } from '../components';
 

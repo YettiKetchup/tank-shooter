@@ -1,5 +1,5 @@
 import { ViewBuilder, EntityStorage } from 'mysh-pixi';
-import { Container } from 'pixijs';
+import { Container } from '@pixi/display';
 import { EnemyTankView, PlayerTankView } from '@widgets/tank-module';
 import { GameStageEnvironmentView } from '@modules/environment-module';
 import { SmartFitComponent } from '@shared/modules/resize-module';

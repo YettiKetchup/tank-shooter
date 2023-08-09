@@ -1,4 +1,5 @@
-import { Application } from 'pixijs';
+import { Application } from '@pixi/app';
+import '@pixi/events';
 
 export class PixiRenderer {
   public static Application: Application;

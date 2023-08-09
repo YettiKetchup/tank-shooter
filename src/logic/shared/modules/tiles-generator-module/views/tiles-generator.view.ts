@@ -1,5 +1,5 @@
+import { Container } from '@pixi/display';
 import { EntitiesCollection, ViewBuilder } from 'mysh-pixi';
-import { Container } from 'pixijs';
 import { TilesGeneratorComponent, TilesMapComponent } from '../components';
 
 export const TilesGeneratorView = (

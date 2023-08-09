@@ -1,4 +1,4 @@
-import { Container } from 'pixijs';
+import { Container } from '@pixi/display';
 import { System, Filtered, Includes } from 'mysh-pixi';
 import { ARScaleLandscape, ARScalePortrait } from '../components';
 import { PixiOrientation } from '../data/types';
