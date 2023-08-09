@@ -11,43 +11,53 @@ export class AnimateProjectileSystem extends System {
       const projectile = entity.get(ProjectileComponent);
 
       const flyTo = projectile.distanceDelta * projectile.flyDistance;
-      const time = flyTo / projectile.speed;
-      const flyTimeline = gsap.timeline();
+      const scaleTo = 2 / projectile.distanceDelta;
+      const time = 0.8;
 
       sprite.alpha = 1;
 
-      //TODO: Clean up this mess
-      flyTimeline.to(sprite, {
-        y: -flyTo,
-        duration: time,
-        ease: 'none',
-        onComplete: () => {
-          const entity$ = entity.observable();
-          entity$.add(new ProjectileFallComponent());
-        },
+      this.animateScale(sprite, scaleTo, time);
+
+      this.animateDirection(sprite, flyTo, time, () => {
+        const entity$ = entity.observable();
+        entity$.add(new ProjectileFallComponent());
       });
+    });
+  }
 
-      flyTimeline.to(
-        sprite.scale,
-        {
-          x: 2,
-          y: 2,
-          duration: time / 2,
-          ease: 'none',
-        },
-        '<'
-      );
+  private animateScale(sprite: Sprite, scale: number, time: number): void {
+    const timeline = gsap.timeline();
 
-      flyTimeline.to(
-        sprite.scale,
-        {
-          x: 1,
-          y: 1,
-          duration: time / 2,
-          ease: 'none',
-        },
-        '>'
-      );
+    timeline.to(sprite.scale, {
+      x: scale,
+      y: scale,
+      duration: time / 2,
+      ease: 'none',
+    });
+
+    timeline.to(
+      sprite.scale,
+      {
+        x: 1,
+        y: 1,
+        duration: time / 2,
+        ease: 'none',
+      },
+      '>'
+    );
+  }
+
+  private animateDirection(
+    sprite: Sprite,
+    direction: number,
+    time: number,
+    onComplete: () => void
+  ): void {
+    gsap.to(sprite, {
+      y: -direction,
+      duration: time,
+      ease: 'none',
+      onComplete: onComplete,
     });
   }
 }
