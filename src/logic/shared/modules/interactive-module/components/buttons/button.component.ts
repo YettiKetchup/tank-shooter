@@ -1,5 +1,5 @@
+import { Texture } from '@pixi/core';
 import { AssetsLoader } from 'mysh-pixi';
-import { Texture } from 'pixijs';
 
 export class ButtonComponent {
   private _idle: Texture | null = null;

@@ -1,4 +1,4 @@
-import { Container } from 'pixijs';
+import { Container } from '@pixi/display';
 import { System, Filtered, Includes } from 'mysh-pixi';
 import { SmartFitComponent } from '../components';
 import { ResizeModuleConfig } from '../data/resize-module.config';

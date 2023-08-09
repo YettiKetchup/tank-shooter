@@ -1,4 +1,4 @@
-import { Container } from 'pixijs';
+import { Container } from '@pixi/display';
 import { Includes, System, Filtered } from 'mysh-pixi';
 import { ChangableDisabledAlpha, DisabledButtonComponent } from '../components';
 

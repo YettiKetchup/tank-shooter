@@ -1,5 +1,5 @@
 import { EntitiesCollection, ViewBuilder } from 'mysh-pixi';
-import { Container } from 'pixijs';
+import { Container } from '@pixi/display';
 import { EndGameText } from './end-game.text';
 import { TimerComponent } from '../components';
 

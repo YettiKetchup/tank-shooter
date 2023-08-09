@@ -1,4 +1,4 @@
-import { Sprite } from 'pixijs';
+import { Sprite } from '@pixi/sprite';
 import { ProjectileType, StorageKey } from '@shared/data';
 import { IntersectableComponent } from '@shared/modules';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';

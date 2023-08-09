@@ -1,9 +1,10 @@
+import { Sprite } from '@pixi/sprite';
+import { Container } from '@pixi/display';
 import { StorageKey } from '@shared/data';
 import { TankType } from '@shared/data/tank';
 import { getTankData } from '@shared/utils';
 import { TankComponent } from '@widgets/tank-module/components';
 import { Component, EntityStorage, ViewBuilder } from 'mysh-pixi';
-import { Container, Sprite } from 'pixijs';
 
 export const TankView = (type: TankType, ...components: Component[]) => {
   const collection = EntityStorage.get(StorageKey.Game);

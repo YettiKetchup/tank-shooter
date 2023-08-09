@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import { Sprite } from 'pixijs';
+import { Sprite } from '@pixi/sprite';
 import { Entity, Filtered, System, Includes } from 'mysh-pixi';
 import { ProjectileComponent, ProjectileFallComponent } from '../components';
 

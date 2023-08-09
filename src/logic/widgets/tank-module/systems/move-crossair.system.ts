@@ -1,6 +1,6 @@
+import { Sprite } from '@pixi/sprite';
 import { Entity, Filtered, System, Includes } from 'mysh-pixi';
 import { CrossairComponent } from '../components';
-import { Sprite } from 'pixijs';
 
 @Includes(Sprite, CrossairComponent)
 export class MoveCrossairSystem extends System {

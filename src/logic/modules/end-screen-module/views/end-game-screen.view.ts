@@ -1,7 +1,8 @@
 import { AssetKey, StorageKey } from '@shared/data';
 import { SmartFitComponent } from '@shared/modules';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';
-import { Container, Sprite } from 'pixijs';
+import { Container } from '@pixi/display';
+import { Sprite } from '@pixi/sprite';
 import { EndScreenComponent } from '../components';
 import { EndGameSign } from './end-game-sign.view';
 

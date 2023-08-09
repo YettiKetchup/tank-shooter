@@ -1,6 +1,6 @@
 import { TilesGeneratorView } from '@shared/modules/tiles-generator-module';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';
-import { Container } from 'pixijs';
+import { Container } from '@pixi/display';
 import { groundGrid, groundMapConfig } from '../data/ground-tiles.data';
 import { TreesView } from './trees.view';
 import { BarricadesView } from './barricades.view';
