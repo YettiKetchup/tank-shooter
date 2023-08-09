@@ -10,6 +10,6 @@ export const ParticleContainerView = (
   //prettier-ignore
   return new ViewBuilder(Container)
     .asEntity(collection)
-      .withComponent(new ParticleContainerComponent(config))
+      .withComponent(new ParticleContainerComponent(config), true)
   .build();
 };
