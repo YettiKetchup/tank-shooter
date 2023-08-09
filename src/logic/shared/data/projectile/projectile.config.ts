@@ -1,3 +1,5 @@
+import { bigExplosion } from './particles/big-explosion';
+import { mediumExplosion } from './particles/medium-explosion';
 import { smallExplosion } from './particles/small-explosion';
 import { ProjectileData } from './types';
 
@@ -18,7 +20,7 @@ export const projectileConfig: ProjectileData[] = [
     flyDistance: 900,
     speed: 800,
     chargingSpeed: 0.01,
-    particles: smallExplosion,
+    particles: mediumExplosion,
   },
   {
     type: 'big',
@@ -27,6 +29,6 @@ export const projectileConfig: ProjectileData[] = [
     flyDistance: 1000,
     speed: 900,
     chargingSpeed: 0.015,
-    particles: smallExplosion,
+    particles: bigExplosion,
   },
 ];

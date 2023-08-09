@@ -1,11 +1,12 @@
 import { Texture } from '@pixi/core';
 
-export const smallExplosion = (texture: Texture) => ({
+export const mediumExplosion = (texture: Texture) => ({
   lifetime: {
     min: 0.5,
     max: 0.5,
   },
-  frequency: 0.008,
+  particlesPerWave: 20,
+  frequency: 0.1,
   emitterLifetime: 0.31,
   maxParticles: 1000,
   addAtBack: false,
@@ -32,20 +33,10 @@ export const smallExplosion = (texture: Texture) => ({
       },
     },
     {
-      type: 'moveSpeed',
+      type: 'moveSpeedStatic',
       config: {
-        speed: {
-          list: [
-            {
-              time: 0,
-              value: 200,
-            },
-            {
-              time: 1,
-              value: 100,
-            },
-          ],
-        },
+        min: 350,
+        max: 350,
       },
     },
     {
@@ -55,7 +46,7 @@ export const smallExplosion = (texture: Texture) => ({
           list: [
             {
               time: 0,
-              value: 1,
+              value: 0.5,
             },
             {
               time: 1,
@@ -84,29 +75,17 @@ export const smallExplosion = (texture: Texture) => ({
       },
     },
     {
-      type: 'rotationStatic',
-      config: {
-        min: 0,
-        max: 360,
-      },
-    },
-    {
       type: 'textureSingle',
       config: {
         texture: texture,
       },
     },
     {
-      type: 'spawnShape',
+      type: 'spawnBurst',
       config: {
-        type: 'torus',
-        data: {
-          x: 0,
-          y: 0,
-          radius: 10,
-          innerRadius: 0,
-          affectRotation: false,
-        },
+        start: 0,
+        spacing: 0,
+        distance: 0,
       },
     },
   ],

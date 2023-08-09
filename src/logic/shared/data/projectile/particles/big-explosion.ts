@@ -1,14 +1,31 @@
 import { Texture } from '@pixi/core';
 
-export const smallExplosion = (texture: Texture) => ({
+export const bigExplosion = (texture: Texture) => ({
   lifetime: {
     min: 0.5,
-    max: 0.5,
+    max: 1,
   },
-  frequency: 0.008,
-  emitterLifetime: 0.31,
-  maxParticles: 1000,
-  addAtBack: false,
+  ease: [
+    {
+      s: 0,
+      cp: 0.329,
+      e: 0.548,
+    },
+    {
+      s: 0.548,
+      cp: 0.767,
+      e: 0.876,
+    },
+    {
+      s: 0.876,
+      cp: 0.985,
+      e: 1,
+    },
+  ],
+  frequency: 0.001,
+  emitterLifetime: 0.1,
+  maxParticles: 100,
+  addAtBack: true,
   pos: {
     x: 0,
     y: 0,
@@ -21,11 +38,11 @@ export const smallExplosion = (texture: Texture) => ({
           list: [
             {
               time: 0,
-              value: 0.8,
+              value: 0.74,
             },
             {
               time: 1,
-              value: 0.1,
+              value: 0,
             },
           ],
         },
@@ -38,11 +55,11 @@ export const smallExplosion = (texture: Texture) => ({
           list: [
             {
               time: 0,
-              value: 200,
+              value: 700,
             },
             {
               time: 1,
-              value: 100,
+              value: 50,
             },
           ],
         },
@@ -59,7 +76,7 @@ export const smallExplosion = (texture: Texture) => ({
             },
             {
               time: 1,
-              value: 0.3,
+              value: 0.2,
             },
           ],
         },
@@ -84,10 +101,13 @@ export const smallExplosion = (texture: Texture) => ({
       },
     },
     {
-      type: 'rotationStatic',
+      type: 'rotation',
       config: {
-        min: 0,
-        max: 360,
+        accel: 0,
+        minSpeed: 0,
+        maxSpeed: 200,
+        minStart: 0,
+        maxStart: 360,
       },
     },
     {
@@ -97,17 +117,8 @@ export const smallExplosion = (texture: Texture) => ({
       },
     },
     {
-      type: 'spawnShape',
-      config: {
-        type: 'torus',
-        data: {
-          x: 0,
-          y: 0,
-          radius: 10,
-          innerRadius: 0,
-          affectRotation: false,
-        },
-      },
+      type: 'spawnPoint',
+      config: {},
     },
   ],
 });
