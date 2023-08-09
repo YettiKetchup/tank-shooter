@@ -23,7 +23,7 @@
     "@pixi/text": "^7.2.4",
     "@pixi/ticker": "^7.2.4",
     "gsap": "^3.12.2",
-    "mysh-pixi": "file:../../mysh-pixi",
+    "mysh-pixi": "^0.0.4",
     "pixijs": "^7.1.4"
   },
   "devDependencies": {
