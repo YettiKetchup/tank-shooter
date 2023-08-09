@@ -10,11 +10,14 @@ export class BlockAmmoButtons extends System {
   protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const entity$ = entity.observable();
+      const ammo = entity.get(AmmoCountComponent);
 
       if (this.block && !entity.has([DisabledButtonComponent])) {
         entity$.add(new DisabledButtonComponent());
       } else if (!this.block && entity.has([DisabledButtonComponent])) {
-        entity$.remove(DisabledButtonComponent);
+        if (ammo.value > 0) {
+          entity$.remove(DisabledButtonComponent);
+        }
       }
     });
   }
