@@ -1,19 +1,19 @@
 import { Container } from '@pixi/display';
-import { System, Filtered, Includes } from 'mysh-pixi';
+import { System, Filtered, Includes, ObservableEntity } from 'mysh-pixi';
 import { ButtonHoldableComponent, ButtonHoldedComponent } from '../components';
 
 @Includes(ButtonHoldableComponent, Container)
 export class HoldPointerSystem extends System {
   protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
-      let timeoutId: ReturnType<typeof setInterval>;
+      let intervalId: ReturnType<typeof setInterval>;
       const entity$ = entity.observable();
       const container = entity.get(Container);
 
       container.interactive = true;
 
       container.on('pointerdown', () => {
-        timeoutId = setInterval(() => {
+        intervalId = setInterval(() => {
           if (!entity.has([ButtonHoldedComponent])) {
             entity$.add(new ButtonHoldedComponent());
           } else {
@@ -24,18 +24,22 @@ export class HoldPointerSystem extends System {
       });
 
       container.on('pointerup', () => {
-        clearInterval(timeoutId);
-        if (entity.has([ButtonHoldedComponent])) {
-          entity$.remove(ButtonHoldedComponent);
-        }
+        this.reset(entity$, intervalId);
       });
 
       container.on('pointerleave', () => {
-        clearInterval(timeoutId);
-        if (entity.has([ButtonHoldedComponent])) {
-          entity$.remove(ButtonHoldedComponent);
-        }
+        this.reset(entity$, intervalId);
       });
     });
+  }
+
+  private reset(
+    entity$: ObservableEntity,
+    timeoutId: ReturnType<typeof setInterval>
+  ): void {
+    clearInterval(timeoutId);
+    if (entity$.instance.has([ButtonHoldedComponent])) {
+      entity$.remove(ButtonHoldedComponent);
+    }
   }
 }
