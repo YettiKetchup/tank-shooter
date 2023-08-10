@@ -12,18 +12,34 @@ export class ButtonClickShiftSystem extends System {
   protected onExecute(entities: Filtered): void {
     entities.loop((entity) => {
       const sprite = entity.get(Sprite);
-      const { x, y } = entity.get(ButtonShiftedClick);
+      const button = entity.get(ButtonShiftedClick);
 
       sprite.on('pointerdown', () => {
         if (entity.has([DisabledButtonComponent])) return;
-        sprite.x += x;
-        sprite.y += y;
+        this.shift(sprite, button);
       });
 
       sprite.on('pointerup', () => {
-        sprite.x -= x;
-        sprite.y -= y;
+        this.reset(sprite, button);
+      });
+
+      sprite.on('pointerleave', () => {
+        if (button.shifted) {
+          this.reset(sprite, button);
+        }
       });
     });
+  }
+
+  private shift(sprite: Sprite, button: ButtonShiftedClick): void {
+    sprite.x += button.x;
+    sprite.y += button.y;
+    button.shifted = true;
+  }
+
+  private reset(sprite: Sprite, button: ButtonShiftedClick): void {
+    sprite.x -= button.x;
+    sprite.y -= button.y;
+    button.shifted = false;
   }
 }

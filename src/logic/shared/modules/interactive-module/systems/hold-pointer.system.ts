@@ -29,6 +29,13 @@ export class HoldPointerSystem extends System {
           entity$.remove(ButtonHoldedComponent);
         }
       });
+
+      container.on('pointerleave', () => {
+        clearInterval(timeoutId);
+        if (entity.has([ButtonHoldedComponent])) {
+          entity$.remove(ButtonHoldedComponent);
+        }
+      });
     });
   }
 }
