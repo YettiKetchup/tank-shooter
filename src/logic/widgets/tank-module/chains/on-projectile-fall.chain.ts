@@ -40,6 +40,6 @@ export const OnProjectileFallChain = (
       .withIncludes(CrossairComponent)
 
     .withSystem(ClearIndicatorSystem)
-    .withSystem(BlockAmmoButtons, {block: false})
+    .withSystem(BlockAmmoButtons, {needBlock: false})
   .build();
 };
