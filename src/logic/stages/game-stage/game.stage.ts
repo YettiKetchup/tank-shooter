@@ -7,12 +7,16 @@ import { TilesGeneratorModule } from '@shared/modules/tiles-generator-module';
 import { StorageKey } from '@shared/data';
 import { ShootUIModule } from '@modules/shoot-ui-module';
 import { EndScreenModule } from '@modules/end-screen-module';
+import { ParticleModule } from '@shared/modules/particle-module';
+import { DecalModule } from '@shared/modules';
 
 @Root(RootView)
 @Modules(
   new InteractiveModule([StorageKey.Game, StorageKey.UI]),
   new ResizeModule([StorageKey.Game, StorageKey.UI]),
   new TilesGeneratorModule([StorageKey.Game]),
+  new DecalModule([StorageKey.Game]),
+  new ParticleModule(),
   new ShootUIModule(),
   new TankModule(),
   new EndScreenModule()

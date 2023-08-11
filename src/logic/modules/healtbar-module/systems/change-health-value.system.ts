@@ -1,6 +1,6 @@
 import { Entity, Filtered, System, Includes } from 'mysh-pixi';
 import { HealthbarComponent } from '../components';
-import { Sprite } from 'pixijs';
+import { Sprite } from '@pixi/sprite';
 
 @Includes(Sprite, HealthbarComponent)
 export class ChangeHealthSystem extends System {

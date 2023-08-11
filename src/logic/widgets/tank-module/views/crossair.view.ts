@@ -1,6 +1,6 @@
 import { AssetKey, StorageKey } from '@shared/data';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';
-import { Sprite } from 'pixijs';
+import { Sprite } from '@pixi/sprite';
 import { CrossairComponent } from '../components';
 
 export const CrossairView = (maxDistance: number) => {

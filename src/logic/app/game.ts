@@ -1,4 +1,4 @@
-import { Application } from 'pixijs';
+import { Application } from '@pixi/app';
 import { PixiRenderer } from './pixi.renderer';
 import { GameStage } from '@stages/game-stage';
 import { manifest } from '@shared/aseets';

@@ -1,6 +1,6 @@
+import { Container } from '@pixi/display';
 import { Entity, Filtered, System, Includes } from 'mysh-pixi';
 import { IntersectableComponent, IntersectedComponent } from '../components';
-import { Container } from 'pixijs';
 
 @Includes(Container, IntersectableComponent)
 export class DetectIntersectionSystem extends System {

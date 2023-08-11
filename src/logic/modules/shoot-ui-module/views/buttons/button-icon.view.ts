@@ -1,5 +1,5 @@
 import { AssetsLoader, ViewBuilder } from 'mysh-pixi';
-import { Sprite } from 'pixijs';
+import { Sprite } from '@pixi/sprite';
 
 export const ButtonIconView = (icon: string) => {
   const texture = AssetsLoader.Textures.get(icon);

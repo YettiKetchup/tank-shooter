@@ -1,4 +1,4 @@
-import { Sprite } from 'pixijs';
+import { Sprite } from '@pixi/sprite';
 import { ProjectileType, StorageKey } from '@shared/data';
 import { IntersectableComponent } from '@shared/modules';
 import { EntityStorage, ViewBuilder } from 'mysh-pixi';
@@ -15,6 +15,6 @@ export const ProjectileView = (type: ProjectileType) => {
       .withComponent(projectileComponent, true)
       .withComponent(IntersectableComponent)
     .withTexture(texture)
-    .withAnchor(0.5, 1)
+    .withAnchor(0.5, 0.5)
   .build();
 };

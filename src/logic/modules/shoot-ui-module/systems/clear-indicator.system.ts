@@ -1,4 +1,4 @@
-import { Sprite } from 'pixijs';
+import { Sprite } from '@pixi/sprite';
 import { System, Filtered, Includes } from 'mysh-pixi';
 import { ShootIndicatorComponent } from '../components';
 

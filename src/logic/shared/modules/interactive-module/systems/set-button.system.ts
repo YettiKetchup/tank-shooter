@@ -1,4 +1,5 @@
-import { Sprite, Texture } from 'pixijs';
+import { Sprite } from '@pixi/sprite';
+import { Texture } from '@pixi/core';
 
 import {
   System,

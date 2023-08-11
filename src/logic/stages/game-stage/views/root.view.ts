@@ -1,5 +1,5 @@
 import { ViewBuilder } from 'mysh-pixi';
-import { Container } from 'pixijs';
+import { Container } from '@pixi/display';
 import { GameSceneView } from './game-scene.view';
 import { GameUIView } from './game-ui.view';
 

@@ -1,53 +1,26 @@
-import { gsap } from 'gsap';
-import { Sprite } from 'pixijs';
-import { Entity, Filtered, System, Includes } from 'mysh-pixi';
+import { Sprite } from '@pixi/sprite';
 import { ProjectileComponent, ProjectileFallComponent } from '../components';
+import { Entity, Filtered, System, Includes } from 'mysh-pixi';
+import { clamp } from '@shared/utils';
+import { ProjectileFlyAnimation } from '../animations';
 
 @Includes(Sprite, ProjectileComponent)
 export class AnimateProjectileSystem extends System {
-  protected onExecute(entities: Filtered<Entity>): void {
-    entities.loop((entity) => {
+  protected async onExecute(entities: Filtered<Entity>): Promise<void> {
+    await entities.parallel(async (entity) => {
       const sprite = entity.get(Sprite);
       const projectile = entity.get(ProjectileComponent);
 
+      const time = 0.8;
       const flyTo = projectile.distanceDelta * projectile.flyDistance;
-      const time = flyTo / projectile.speed;
-      const flyTimeline = gsap.timeline();
+      let scaleTo = 2 / projectile.distanceDelta;
+      scaleTo = clamp(scaleTo, 1, 3.5);
 
       sprite.alpha = 1;
 
-      //TODO: Clean up this mess
-      flyTimeline.to(sprite, {
-        y: -flyTo,
-        duration: time,
-        ease: 'none',
-        onComplete: () => {
-          const entity$ = entity.observable();
-          entity$.add(new ProjectileFallComponent());
-        },
-      });
-
-      flyTimeline.to(
-        sprite.scale,
-        {
-          x: 2,
-          y: 2,
-          duration: time / 2,
-          ease: 'none',
-        },
-        '<'
-      );
-
-      flyTimeline.to(
-        sprite.scale,
-        {
-          x: 1,
-          y: 1,
-          duration: time / 2,
-          ease: 'none',
-        },
-        '>'
-      );
+      await ProjectileFlyAnimation(sprite, scaleTo, flyTo, time);
+      const entity$ = entity.observable();
+      entity$.add(new ProjectileFallComponent());
     });
   }
 }

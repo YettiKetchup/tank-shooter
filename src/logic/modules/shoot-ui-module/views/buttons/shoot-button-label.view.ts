@@ -1,4 +1,4 @@
-import { Text, TextStyle } from 'pixijs';
+import { Text, TextStyle } from '@pixi/text';
 
 export const ShootButtonLabelView = (label: string) => {
   const style = new TextStyle({
