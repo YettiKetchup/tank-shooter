@@ -1,10 +1,10 @@
 import { Application } from '@pixi/app';
 import { PixiRenderer } from './pixi.renderer';
 import { GameStage } from '@stages/game-stage';
-import { manifest } from '@shared/aseets';
+import { manifest } from '@shared/assets';
 import { stageList } from './data/stage.list';
 import { AssetsLoader, StageController } from 'mysh-pixi';
-import { ResizeModuleConfig } from '@shared/modules/resize-module';
+import { ResizeConfig } from '@features/resize';
 
 export class Game {
   public async init(): Promise<void> {
@@ -46,14 +46,13 @@ export class Game {
     node.style.left = 0;
     node.style.right = 0;
 
-    ResizeModuleConfig.NODE = node;
-
-    ResizeModuleConfig.LANDSCAPE = {
+    ResizeConfig.node = node;
+    ResizeConfig.landscape = {
       width: 1366,
       height: 768,
     };
 
-    ResizeModuleConfig.PORTRAIT = {
+    ResizeConfig.portrait = {
       width: 780,
       height: 1688,
     };
@@ -65,8 +64,8 @@ export class Game {
       app.stage.x = app.view.width / 2;
       app.stage.y = app.view.height / 2;
 
-      ResizeModuleConfig.CURRENT_WIDTH = node.width;
-      ResizeModuleConfig.CURRENT_HEIGHT = node.height;
+      ResizeConfig.currentWidth = node.width;
+      ResizeConfig.currentHeight = node.height;
     }).observe(node);
   }
 
