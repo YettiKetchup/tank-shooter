@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "esnext",
+    "lib": ["es5", "es2015", "es2022", "dom", "esnext"],
     "target": "es2015",
     "declaration": true,
     "outDir": "./dist",
@@ -22,7 +23,8 @@
       "@systems/*": ["logic/systems/*"],
       "@views/*": ["logic/views/*"],
       "@components/*": ["logic/components/*"],
-      "@shared/*": ["logic/shared/*"]
+      "@shared/*": ["logic/shared/*"],
+      "@features/*": ["logic/features/*"]
     }
   },
   "include": ["src/**/*"],

@@ -89,6 +89,7 @@ module.exports = {
       '@views': path.resolve(__dirname, './src/logic/views'),
       '@components': path.resolve(__dirname, './src/logic/components'),
       '@shared': path.resolve(__dirname, './src/logic/shared'),
+      '@features': path.resolve(__dirname, './src/logic/features'),
     },
     extensions: ['.ts', '.js'],
   },
