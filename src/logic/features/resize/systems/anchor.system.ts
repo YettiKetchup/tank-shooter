@@ -1,13 +1,13 @@
 import { Sprite } from '@pixi/sprite';
 import { orientation } from '../utils';
-import { Filtered, System, Includes, OnHook, Lifecycle } from 'mysh-pixi';
-
+import { Filtered, System, Includes, OnEvent } from 'mysh-pixi';
+import { ResizeEvent } from '../events';
 import {
   AnchorLandscapeComponent,
   AnchorPortraitComponent,
 } from '../components';
 
-@OnHook(Lifecycle.Update)
+@OnEvent(ResizeEvent)
 @Includes(AnchorLandscapeComponent, AnchorPortraitComponent, Sprite)
 export class AnchorSystem extends System {
   protected onExecute(filtered: Filtered): void {

@@ -4,7 +4,7 @@ import { GameStage } from '@stages/game-stage';
 import { manifest } from '@shared/assets';
 import { stageList } from './data/stage.list';
 import { AssetsLoader, StageController } from 'mysh-pixi';
-import { ResizeConfig } from '@features/resize';
+import { ResizeConfig, ResizeEvent } from '@features/resize';
 
 export class Game {
   public async init(): Promise<void> {
@@ -66,6 +66,7 @@ export class Game {
 
       ResizeConfig.currentWidth = node.width;
       ResizeConfig.currentHeight = node.height;
+      ResizeEvent.emit(null);
     }).observe(node);
   }
 

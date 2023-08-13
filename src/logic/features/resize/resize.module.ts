@@ -1,4 +1,5 @@
 import { Module, RegisterSystems } from 'mysh-pixi';
+import { ResizeEvent } from './events';
 import {
   ARPositionSystem,
   ARScaleSystem,
@@ -16,4 +17,9 @@ import {
   { provide: PivotSystem },
   { provide: SmartFitSystem },
 ])
-export class ResizeModule extends Module {}
+export class ResizeModule extends Module {
+  postInit(): void {
+    super.postInit();
+    ResizeEvent.emit(null);
+  }
+}
