@@ -4,9 +4,10 @@ import { SceneView } from './scene.view';
 import { UIView } from './ui.view';
 
 export const RootView = () => {
-  //prettier-ignore
+  const projectileParent = SceneView();
+
   return new ViewBuilder(Container)
-    .withNode(SceneView())
+    .withNode(projectileParent)
     .withNode(UIView())
-  .build()
+    .build();
 };

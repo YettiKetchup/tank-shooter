@@ -1,7 +1,5 @@
 import { Sprite } from '@pixi/sprite';
-
 import { Filtered, System, Includes, OnHook, Lifecycle } from 'mysh-pixi';
-
 import {
   ButtonComponent,
   ButtonShiftedClick,
@@ -11,8 +9,8 @@ import {
 @OnHook(Lifecycle.Init)
 @Includes(ButtonComponent, ButtonShiftedClick, Sprite)
 export class ButtonClickShift extends System {
-  protected onExecute(entities: Filtered): void {
-    entities.loop((entity) => {
+  protected onExecute(filtered: Filtered): void {
+    filtered.loop((entity) => {
       const sprite = entity.get(Sprite);
       const button = entity.get(ButtonShiftedClick);
 

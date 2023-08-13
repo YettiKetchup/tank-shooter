@@ -7,11 +7,11 @@ import { Filtered, System, Includes, OnHook, Lifecycle } from 'mysh-pixi';
 @OnHook(Lifecycle.Update)
 @Includes(ARPositionLandscape, ARPositionPortrait, Container)
 export class ARPositionSystem extends System {
-  protected onExecute(entities: Filtered): void {
+  protected onExecute(filtered: Filtered): void {
     const { currentWidth, currentHeight, aspectRatio } = ResizeConfig;
     const currentAspect = getAspectRatio(currentWidth, currentHeight);
 
-    entities.loop((entity) => {
+    filtered.loop((entity) => {
       const container = entity.get(Container);
 
       const position =

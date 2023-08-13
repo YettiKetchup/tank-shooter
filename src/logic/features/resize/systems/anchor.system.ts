@@ -10,8 +10,8 @@ import {
 @OnHook(Lifecycle.Update)
 @Includes(AnchorLandscapeComponent, AnchorPortraitComponent, Sprite)
 export class AnchorSystem extends System {
-  protected onExecute(entities: Filtered): void {
-    entities.loop((entity) => {
+  protected onExecute(filtered: Filtered): void {
+    filtered.loop((entity) => {
       const sprite = entity.get(Sprite);
       let anchor =
         orientation() === 'landscape'

@@ -6,10 +6,10 @@ import { Filtered, System, Includes, OnHook, Lifecycle } from 'mysh-pixi';
 @OnHook(Lifecycle.Update)
 @Includes(SmartFitComponent, Container)
 export class SmartFitSystem extends System {
-  protected onExecute(entities: Filtered): void {
+  protected onExecute(filtered: Filtered): void {
     const { currentWidth, currentHeight } = ResizeConfig;
 
-    entities.loop((entity) => {
+    filtered.loop((entity) => {
       const container = entity.get(Container);
       const zoneAspect = currentWidth / currentHeight;
       const nodeAspect = container.width / container.height;

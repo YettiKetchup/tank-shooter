@@ -12,8 +12,8 @@ import {
 @OnHook(Lifecycle.Init)
 @Includes(ButtonHoldableComponent, Container)
 export class HoldPointerSystem extends System {
-  protected onExecute(entities: Filtered): void {
-    entities.loop((entity) => {
+  protected onExecute(filtered: Filtered): void {
+    filtered.loop((entity) => {
       let intervalId: ReturnType<typeof setInterval>;
       const entity$ = entity.observable();
       const container = entity.get(Container);

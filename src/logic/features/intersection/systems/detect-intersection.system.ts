@@ -5,14 +5,14 @@ import { Filtered, System, Includes, OnHook, Lifecycle } from 'mysh-pixi';
 @OnHook(Lifecycle.Update)
 @Includes(Container, IntersectableComponent)
 export class DetectIntersectionSystem extends System {
-  protected onExecute(entities: Filtered): void {
-    entities.loop((entity) => {
+  protected onExecute(filtered: Filtered): void {
+    filtered.loop((entity) => {
       const a = entity.get(Container);
 
-      for (let i = 0; i < entities.count; i++) {
-        if (entity === entities.list[i]) continue;
+      for (let i = 0; i < filtered.count; i++) {
+        if (entity === filtered.list[i]) continue;
 
-        const b = entities.list[i].get(Container);
+        const b = filtered.list[i].get(Container);
         const isIntersect = this.isIntersects(a, b);
 
         const entity$ = entity.observable();

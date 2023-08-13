@@ -10,8 +10,8 @@ import {
 @OnHook(Lifecycle.Update)
 @Includes(PositionLandscapeComponent, PositionPortraitComponent, Container)
 export class AbsolutePositionSystem extends System {
-  protected onExecute(entities: Filtered): void {
-    entities.loop((entity) => {
+  protected onExecute(filtered: Filtered): void {
+    filtered.loop((entity) => {
       const container = entity.get(Container);
       let position =
         orientation() === 'landscape'

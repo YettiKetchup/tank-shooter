@@ -13,8 +13,8 @@ import {
 @Excludes(DisabledButtonComponent)
 @OnChanges(WatchFor.Removed, DisabledButtonComponent)
 export class EnableChildrenAlpha extends System {
-  protected onExecute(entities: Filtered): void {
-    entities.loop((entity) => {
+  protected onExecute(filtered: Filtered): void {
+    filtered.loop((entity) => {
       const alpha = entity.get(ChangableDisabledAlpha);
       const container = entity.get(Container);
 
