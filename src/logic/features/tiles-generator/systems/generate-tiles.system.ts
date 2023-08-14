@@ -14,8 +14,8 @@ import {
 @OnHook(Lifecycle.Init)
 @Includes(TilesGeneratorComponent, TilesMapComponent, Container)
 export class GenerateTilesSystem extends System {
-  protected onExecute(entities: Filtered): void {
-    entities.loop(this.generateEnvironment);
+  protected onExecute(filtered: Filtered): void {
+    filtered.loop(this.generateEnvironment);
   }
 
   private generateEnvironment(entity: Entity): void {

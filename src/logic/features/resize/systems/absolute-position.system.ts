@@ -1,17 +1,17 @@
 import { Container } from '@pixi/display';
 import { orientation } from '../utils';
-import { Filtered, System, Includes, OnHook, Lifecycle } from 'mysh-pixi';
-
+import { Filtered, System, Includes, OnEvent } from 'mysh-pixi';
+import { ResizeEvent } from '../events';
 import {
   PositionLandscapeComponent,
   PositionPortraitComponent,
 } from '../components';
 
-@OnHook(Lifecycle.Update)
+@OnEvent(ResizeEvent)
 @Includes(PositionLandscapeComponent, PositionPortraitComponent, Container)
 export class AbsolutePositionSystem extends System {
-  protected onExecute(entities: Filtered): void {
-    entities.loop((entity) => {
+  protected onExecute(filtered: Filtered): void {
+    filtered.loop((entity) => {
       const container = entity.get(Container);
       let position =
         orientation() === 'landscape'

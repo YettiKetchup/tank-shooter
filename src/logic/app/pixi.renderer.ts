@@ -1,5 +1,7 @@
 import { Application } from '@pixi/app';
 import '@pixi/events';
+import '@pixi/mixin-get-child-by-name';
+import '@pixi/mixin-get-global-position';
 
 export class PixiRenderer {
   public static Application: Application;

@@ -1,15 +1,16 @@
 import { Container } from '@pixi/display';
 import { SmartFitComponent } from '../components';
 import { ResizeConfig } from '../data/resize.config';
-import { Filtered, System, Includes, OnHook, Lifecycle } from 'mysh-pixi';
+import { Filtered, System, Includes, OnEvent } from 'mysh-pixi';
+import { ResizeEvent } from '../events';
 
-@OnHook(Lifecycle.Update)
+@OnEvent(ResizeEvent)
 @Includes(SmartFitComponent, Container)
 export class SmartFitSystem extends System {
-  protected onExecute(entities: Filtered): void {
+  protected onExecute(filtered: Filtered): void {
     const { currentWidth, currentHeight } = ResizeConfig;
 
-    entities.loop((entity) => {
+    filtered.loop((entity) => {
       const container = entity.get(Container);
       const zoneAspect = currentWidth / currentHeight;
       const nodeAspect = container.width / container.height;

@@ -18,13 +18,11 @@
     "paths": {
       "@app/*": ["logic/app/*"],
       "@stages/*": ["logic/stages/*"],
-      "@widgets/*": ["logic/widgets/*"],
+      "@entities/*": ["logic/entities/*"],
       "@modules/*": ["logic/modules/*"],
-      "@systems/*": ["logic/systems/*"],
-      "@views/*": ["logic/views/*"],
-      "@components/*": ["logic/components/*"],
-      "@shared/*": ["logic/shared/*"],
-      "@features/*": ["logic/features/*"]
+      "@widgets/*": ["logic/widgets/*"],
+      "@features/*": ["logic/features/*"],
+      "@shared/*": ["logic/shared/*"]
     }
   },
   "include": ["src/**/*"],

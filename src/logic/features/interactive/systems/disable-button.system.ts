@@ -5,8 +5,8 @@ import { Filtered, System, Includes, OnChanges, WatchFor } from 'mysh-pixi';
 @OnChanges(WatchFor.Added, DisabledButtonComponent)
 @Includes(ButtonComponent, DisabledButtonComponent, Sprite)
 export class DisableButtonSystem extends System {
-  protected onExecute(entities: Filtered): void {
-    entities.loop((entity) => {
+  protected onExecute(filtered: Filtered): void {
+    filtered.loop((entity) => {
       const sprite = entity.get(Sprite);
       const button = entity.get(ButtonComponent);
 

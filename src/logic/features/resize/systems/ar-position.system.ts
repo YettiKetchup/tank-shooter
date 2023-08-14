@@ -2,16 +2,17 @@ import { Container } from '@pixi/display';
 import { getAspectRatio, orientation } from '../utils';
 import { ResizeConfig } from '../data/resize.config';
 import { ARPositionLandscape, ARPositionPortrait } from '../components';
-import { Filtered, System, Includes, OnHook, Lifecycle } from 'mysh-pixi';
+import { Filtered, System, Includes, OnEvent } from 'mysh-pixi';
+import { ResizeEvent } from '../events';
 
-@OnHook(Lifecycle.Update)
+@OnEvent(ResizeEvent)
 @Includes(ARPositionLandscape, ARPositionPortrait, Container)
 export class ARPositionSystem extends System {
-  protected onExecute(entities: Filtered): void {
+  protected onExecute(filtered: Filtered): void {
     const { currentWidth, currentHeight, aspectRatio } = ResizeConfig;
     const currentAspect = getAspectRatio(currentWidth, currentHeight);
 
-    entities.loop((entity) => {
+    filtered.loop((entity) => {
       const container = entity.get(Container);
 
       const position =

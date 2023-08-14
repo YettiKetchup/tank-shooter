@@ -18,13 +18,14 @@
     "@pixi/core": "^7.2.4",
     "@pixi/display": "^7.2.4",
     "@pixi/events": "^7.2.4",
+    "@pixi/mixin-get-child-by-name": "^7.2.4",
     "@pixi/mixin-get-global-position": "^7.2.4",
     "@pixi/particle-emitter": "^5.0.8",
     "@pixi/sprite": "^7.2.4",
     "@pixi/text": "^7.2.4",
     "@pixi/ticker": "^7.2.4",
     "gsap": "^3.12.2",
-    "mysh-pixi": "^0.0.5"
+    "mysh-pixi": "^0.0.6"
   },
   "devDependencies": {
     "@babel/core": "7.18.9",

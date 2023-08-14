@@ -1,3 +1,4 @@
+export * from './events';
 export * from './components';
 
 export { ResizeModule } from './resize.module';
