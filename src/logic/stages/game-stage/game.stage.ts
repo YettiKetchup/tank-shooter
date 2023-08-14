@@ -10,7 +10,8 @@ import { TankModule } from '@widgets/tank';
 import { TankAPI } from '@shared/api/tanks';
 import { InteractiveModule } from '@features/interactive';
 import { ResizeModule } from '@features/resize';
-import { BattleModule } from '@modules/battle-module/battle.module';
+import { BattleModule } from '@modules/battle-module';
+import { EndGameModule } from '@modules/end-game';
 import { PowerbarModule } from '@widgets/power-bar';
 import { HealthbarModule } from '@widgets/healthbar';
 import { CrossairModule } from '@widgets/crossair';
@@ -22,7 +23,6 @@ import {
   BigExplosionView,
   CracksView,
 } from '@entities/vfx';
-import { EndGameModule } from '@modules/end-game';
 
 @Root(RootView)
 @Modules(
